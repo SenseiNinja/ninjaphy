@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">⚛</span><span class="logo-text">Ninja<span class="accent">Phy</span></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html"><i class="fas fa-home"></i> Accueil</a></li>
+      <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero" style="background:linear-gradient(135deg,#0c4a6e,#0ea5e9,#38bdf8)">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem"></i><span>Contact</span></div>
+    <h1><i class="fas fa-envelope"></i> Contact</h1>
+    <p>Une question ? Un problème avec un code d'accès ? Contactez le professeur ici.</p>
+  </div>
+</section>
+
+<section style="padding:4rem 0">
+  <div class="container" style="max-width:900px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start">
+
+      <!-- Infos -->
+      <div>
+        <h2 style="font-size:1.25rem;font-weight:900;margin-bottom:1.5rem">Nous contacter</h2>
+
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <div class="feature-icon icon-blue" style="flex-shrink:0;width:44px;height:44px;font-size:1rem"><i class="fas fa-school"></i></div>
+            <div>
+              <h4 style="font-weight:800;margin-bottom:0.2rem">Pronote / ENT</h4>
+              <p style="font-size:0.87rem;color:var(--text-muted)">Voie principale pour les élèves et les familles. Messagerie interne de l'établissement.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <div class="feature-icon icon-green" style="flex-shrink:0;width:44px;height:44px;font-size:1rem"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4 style="font-weight:800;margin-bottom:0.2rem">Formulaire ci-contre</h4>
+              <p style="font-size:0.87rem;color:var(--text-muted)">Pour les questions sur le site, les ressources ou les codes d'accès.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <div class="feature-icon icon-purple" style="flex-shrink:0;width:44px;height:44px;font-size:1rem"><i class="fab fa-youtube"></i></div>
+            <div>
+              <h4 style="font-weight:800;margin-bottom:0.2rem">Chaîne YouTube</h4>
+              <p style="font-size:0.87rem;color:var(--text-muted)">Vidéos complémentaires aux cours sur ma chaîne YouTube (lien bientôt disponible).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-info" style="margin-top:2rem">
+          <i class="fas fa-clock"></i>
+          <span>Je réponds généralement sous <strong>48h</strong> en période scolaire.</span>
+        </div>
+
+        <div class="alert alert-warning" style="margin-top:1rem">
+          <i class="fas fa-shield-alt"></i>
+          <span><strong>RGPD :</strong> Ne communiquez pas d'informations personnelles sensibles via ce formulaire. Pour les questions RGPD : <a href="rgpd.html" style="color:inherit;text-decoration:underline">voir la politique de confidentialité</a>.</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem">
+        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:1.25rem"><i class="fas fa-paper-plane" style="color:var(--primary)"></i> Envoyer un message</h3>
+        <form id="contactForm" onsubmit="handleContact(event)">
+          <div class="form-group">
+            <label>Vous êtes :</label>
+            <select required>
+              <option value="">-- Sélectionner --</option>
+              <option>Un élève</option>
+              <option>Un parent d'élève</option>
+              <option>Un collègue enseignant</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Sujet :</label>
+            <select required>
+              <option value="">-- Choisir le sujet --</option>
+              <option>Code d'accès perdu / problème de connexion</option>
+              <option>Question sur une ressource</option>
+              <option>Erreur sur le site</option>
+              <option>Question RGPD / données personnelles</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Votre message :</label>
+            <textarea placeholder="Décrivez votre demande..." required style="min-height:120px"></textarea>
+          </div>
+          <div class="rgpd-notice">
+            <i class="fas fa-shield-alt"></i>
+            <span>Ne communiquez pas d'informations personnelles sensibles. Ce formulaire est à titre informatif uniquement – dans un déploiement réel, il serait connecté à un service d'envoi d'email.</span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fas fa-paper-plane"></i> Envoyer le message
+          </button>
+          <div id="contactSuccess" style="display:none;margin-top:1rem" class="alert alert-success">
+            <i class="fas fa-check-circle"></i>
+            Message envoyé avec succès ! Je vous répondrai sous 48h.
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy</p>
+      <p class="footer-made">Fait avec <i class="fas fa-heart"></i> pour mes élèves</p>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<script src="../js/main.js"></script>
+<script>
+function handleContact(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'flex';
+}
+</script>
+</body>
+</html>

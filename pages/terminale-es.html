@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminale ES – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .page-hero { background: linear-gradient(135deg, #2e1065, #6d28d9, #8b5cf6); }
+    .chapitre-num { background: #6d28d9; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">⚛</span>
+      <span class="logo-text">Ninja<span class="accent">Phy</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html"><i class="fas fa-home"></i> Accueil</a></li>
+      <li class="dropdown">
+        <a href="#"><i class="fas fa-graduation-cap"></i> Classes <i class="fas fa-chevron-down small"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="seconde.html"><span class="badge badge-blue">2de</span> Seconde</a></li>
+          <li><a href="premiere-es.html"><span class="badge badge-green">1re ES</span> Première ES</a></li>
+          <li><a href="terminale-es.html"><span class="badge badge-purple">Tle ES</span> Terminale ES</a></li>
+          <li><a href="premiere-sti2d.html"><span class="badge badge-orange">1re STI2D</span> Première STI2D</a></li>
+        </ul>
+      </li>
+      <li><a href="ressources.html"><i class="fas fa-book-open"></i> Ressources</a></li>
+      <li><a href="espace-eleve.html"><i class="fas fa-user-graduate"></i> Espace Élève</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <a href="espace-eleve.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Accueil</a>
+      <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+      <span>Terminale ES</span>
+    </div>
+    <div class="hero-badge" style="margin-bottom:1rem">
+      <i class="fas fa-rocket"></i> Enseignement Scientifique – Terminale
+    </div>
+    <h1>Terminale – Enseignement Scientifique</h1>
+    <p>Science des systèmes complexes · Enjeux contemporains des sciences · Mathématiques et modélisation</p>
+  </div>
+</section>
+
+<section class="progress-section">
+  <div class="container">
+    <div class="progress-grid">
+      <div class="progress-card">
+        <h4><i class="fas fa-brain"></i> Intelligence Artificielle</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:80%"></div></div>
+        <div class="progress-pct">80% du programme</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-heartbeat"></i> Santé & Sciences</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:50%"></div></div>
+        <div class="progress-pct">50% du programme</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-satellite"></i> Sciences de l'Univers</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:35%"></div></div>
+        <div class="progress-pct">35% du programme</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-calculator"></i> Modélisation Math</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:65%"></div></div>
+        <div class="progress-pct">65% du programme</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapitres-section">
+  <div class="container">
+
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-brain" style="color:#8b5cf6"></i> Thème 1 – Science, futur et ruptures</h3>
+      <div class="chapitres-list">
+        <div class="chapitre-item" data-aos="fade-up">
+          <div class="chapitre-num">1</div>
+          <div class="chapitre-info">
+            <h4>L'intelligence artificielle</h4>
+            <p>Algorithmes d'apprentissage, réseaux de neurones, applications et limites</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="chapitre-num">2</div>
+          <div class="chapitre-info">
+            <h4>La révolution numérique</h4>
+            <p>Codage de l'information, cryptographie, big data, éthique du numérique</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-heartbeat" style="color:#ec4899"></i> Thème 2 – Le monde des atomes et la chimie du vivant</h3>
+      <div class="chapitres-list">
+        <div class="chapitre-item" data-aos="fade-up">
+          <div class="chapitre-num">3</div>
+          <div class="chapitre-info">
+            <h4>Structure de la matière et liaison chimique</h4>
+            <p>Liaison covalente, polarité, géométrie moléculaire</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="chapitre-num">4</div>
+          <div class="chapitre-info">
+            <h4>Chimie du vivant – molécules biologiques</h4>
+            <p>Acides aminés, protéines, ADN, réactions enzymatiques</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="chapitre-num">5</div>
+          <div class="chapitre-info">
+            <h4>Médicaments et santé</h4>
+            <p>Synthèse chimique, principes actifs, pharmacocinétique</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-satellite" style="color:#0ea5e9"></i> Thème 3 – Une longue histoire de la matière</h3>
+      <div class="chapitres-list">
+        <div class="chapitre-item" data-aos="fade-up">
+          <div class="chapitre-num">6</div>
+          <div class="chapitre-info">
+            <h4>Origine des éléments chimiques</h4>
+            <p>Nucléosynthèse stellaire, abondance cosmique, tableau périodique</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="chapitre-num">7</div>
+          <div class="chapitre-info">
+            <h4>Datation et radioactivité</h4>
+            <p>Décroissance radioactive, demi-vie, applications (carbone 14, géologie)</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-calculator" style="color:#f59e0b"></i> Thème 4 – Son et musique, science et technique</h3>
+      <div class="chapitres-list">
+        <div class="chapitre-item" data-aos="fade-up">
+          <div class="chapitre-num">8</div>
+          <div class="chapitre-info">
+            <h4>Le son, une onde mécanique</h4>
+            <p>Fréquence, intensité, décibels, perception auditive</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="padding: 3rem 0; background: var(--bg-card)">
+  <div class="container">
+    <div class="alert alert-warning" data-aos="fade-up">
+      <i class="fas fa-star"></i>
+      <span><strong>Baccalauréat :</strong> L'enseignement scientifique est évalué au bac avec une épreuve en terminale. Préparez-vous avec les annales disponibles dans la section Ressources.</span>
+    </div>
+    <div class="formules-box" data-aos="fade-up">
+      <h4><i class="fas fa-superscript"></i> Formules – Terminale ES</h4>
+      <div class="formule">
+        <span class="formule-sym">N(t) = N₀ × (½)^(t/t½)</span>
+        <span class="formule-desc">Loi de décroissance radioactive – t½ = demi-vie</span>
+      </div>
+      <div class="formule">
+        <span class="formule-sym">L = 10 × log(I/I₀)</span>
+        <span class="formule-desc">Niveau sonore en décibels (I₀ = 10⁻¹² W/m²)</span>
+      </div>
+      <div class="formule">
+        <span class="formule-sym">E = h × f</span>
+        <span class="formule-desc">Énergie d'un photon (h = 6,63×10⁻³⁴ J·s)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy</p>
+      <p class="footer-made">Fait avec <i class="fas fa-heart"></i> pour mes élèves</p>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

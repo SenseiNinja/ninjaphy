@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NinjaPhy – Sciences Physiques & Chimie</title>
+  <meta name="description" content="Site pédagogique de physique-chimie : cours, TP, exercices et vidéos pour les lycéens." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">⚛</span>
+      <span class="logo-text">Ninja<span class="accent">Phy</span></span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+      <li class="dropdown">
+        <a href="#classes"><i class="fas fa-graduation-cap"></i> Classes <i class="fas fa-chevron-down small"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="pages/seconde.html"><span class="badge badge-blue">2de</span> Seconde</a></li>
+          <li><a href="pages/premiere-es.html"><span class="badge badge-green">1re ES</span> Première ES</a></li>
+          <li><a href="pages/terminale-es.html"><span class="badge badge-purple">Tle ES</span> Terminale ES</a></li>
+          <li><a href="pages/premiere-sti2d.html"><span class="badge badge-orange">1re STI2D</span> Première STI2D</a></li>
+        </ul>
+      </li>
+      <li><a href="pages/ressources.html"><i class="fas fa-book-open"></i> Ressources</a></li>
+      <li><a href="pages/videos.html"><i class="fas fa-play-circle"></i> Vidéos</a></li>
+      <li><a href="pages/espace-eleve.html"><i class="fas fa-user-graduate"></i> Espace Élève</a></li>
+      <li><a href="pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle" aria-label="Changer le thème">
+        <i class="fas fa-moon"></i>
+      </button>
+      <a href="pages/espace-eleve.html" class="btn-login">
+        <i class="fas fa-sign-in-alt"></i> Connexion
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="particle" style="--x:10%;--y:20%;--s:0.6;--d:6s"></div>
+    <div class="particle" style="--x:80%;--y:15%;--s:0.8;--d:8s"></div>
+    <div class="particle" style="--x:50%;--y:60%;--s:0.5;--d:5s"></div>
+    <div class="particle" style="--x:25%;--y:75%;--s:0.7;--d:7s"></div>
+    <div class="particle" style="--x:90%;--y:50%;--s:0.9;--d:9s"></div>
+    <div class="particle" style="--x:65%;--y:80%;--s:0.4;--d:4s"></div>
+    <div class="atom-svg">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="100" rx="90" ry="35" fill="none" stroke="rgba(99,102,241,0.3)" stroke-width="2"/>
+        <ellipse cx="100" cy="100" rx="90" ry="35" fill="none" stroke="rgba(99,102,241,0.3)" stroke-width="2" transform="rotate(60 100 100)"/>
+        <ellipse cx="100" cy="100" rx="90" ry="35" fill="none" stroke="rgba(99,102,241,0.3)" stroke-width="2" transform="rotate(120 100 100)"/>
+        <circle cx="100" cy="100" r="10" fill="rgba(99,102,241,0.6)"/>
+        <circle cx="190" cy="100" r="6" fill="rgba(244,114,182,0.8)"/>
+        <circle cx="55" cy="168" r="6" fill="rgba(244,114,182,0.8)"/>
+        <circle cx="55" cy="32" r="6" fill="rgba(244,114,182,0.8)"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge" data-aos="fade-down">
+      <i class="fas fa-bolt"></i> Physique-Chimie Niveau Lycée
+    </div>
+    <h1 data-aos="fade-up" data-aos-delay="100">
+      Bienvenue sur <span class="gradient-text">NinjaPhy</span>
+    </h1>
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">
+      Ton espace de cours, TP et exercices en sciences physiques.<br/>
+      Apprends à ton rythme, sois un ninja de la physique !
+    </p>
+    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+      <a href="#classes" class="btn btn-primary">
+        <i class="fas fa-rocket"></i> Choisir ma classe
+      </a>
+      <a href="pages/espace-eleve.html" class="btn btn-outline">
+        <i class="fas fa-user"></i> Espace Élève
+      </a>
+    </div>
+    <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+      <div class="stat"><span class="stat-num" id="counterCours">0</span><span>Cours</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num" id="counterTP">0</span><span>TP</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num" id="counterExo">0</span><span>Exercices</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num" id="counterEleves">0</span><span>Élèves</span></div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <a href="#classes"><i class="fas fa-chevron-down"></i></a>
+  </div>
+</section>
+
+<!-- ===== ANNONCE DU PROF ===== -->
+<section class="annonce-section" id="annonce">
+  <div class="container">
+    <div class="annonce-card" data-aos="fade-up">
+      <div class="annonce-icon"><i class="fas fa-bullhorn"></i></div>
+      <div class="annonce-content">
+        <h3>📢 Message du prof</h3>
+        <p id="annonceText">Bienvenue sur NinjaPhy ! Après chaque séance, retrouvez ici les activités, exercices et ressources liés à votre cours. N'hésitez pas à explorer les différentes rubriques de votre classe.</p>
+        <span class="annonce-date"><i class="far fa-clock"></i> <span id="annonceDate"></span></span>
+      </div>
+      <button class="annonce-close" onclick="this.parentElement.parentElement.parentElement.style.display='none'">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLASSES ===== -->
+<section class="classes-section" id="classes">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-graduation-cap"></i> Niveaux</span>
+      <h2>Choisissez votre classe</h2>
+      <p>Accédez directement aux ressources de votre niveau</p>
+    </div>
+
+    <div class="classes-grid">
+      <!-- Seconde -->
+      <a href="pages/seconde.html" class="class-card card-blue" data-aos="fade-up" data-aos-delay="0">
+        <div class="card-ribbon">Physique-Chimie</div>
+        <div class="card-icon">
+          <i class="fas fa-atom"></i>
+        </div>
+        <div class="card-level">2<sup>de</sup></div>
+        <h3>Seconde</h3>
+        <p>Constitution et transformation de la matière, mouvements et interactions</p>
+        <div class="card-topics">
+          <span><i class="fas fa-flask"></i> Chimie</span>
+          <span><i class="fas fa-bolt"></i> Physique</span>
+          <span><i class="fas fa-microscope"></i> TP</span>
+        </div>
+        <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- Première ES -->
+      <a href="pages/premiere-es.html" class="class-card card-green" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-ribbon">Ens. Scientifique</div>
+        <div class="card-icon">
+          <i class="fas fa-sun"></i>
+        </div>
+        <div class="card-level">1<sup>re</sup></div>
+        <h3>Première ES</h3>
+        <p>La Terre, notre planète dans l'Univers – Science, climat et société</p>
+        <div class="card-topics">
+          <span><i class="fas fa-globe-europe"></i> Terre</span>
+          <span><i class="fas fa-cloud-sun-rain"></i> Climat</span>
+          <span><i class="fas fa-dna"></i> Vivant</span>
+        </div>
+        <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- Terminale ES -->
+      <a href="pages/terminale-es.html" class="class-card card-purple" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-ribbon">Ens. Scientifique</div>
+        <div class="card-icon">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <div class="card-level">T<sup>le</sup></div>
+        <h3>Terminale ES</h3>
+        <p>Science des systèmes complexes – Enjeux contemporains des sciences</p>
+        <div class="card-topics">
+          <span><i class="fas fa-brain"></i> IA</span>
+          <span><i class="fas fa-heartbeat"></i> Santé</span>
+          <span><i class="fas fa-satellite"></i> Espace</span>
+        </div>
+        <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- Première STI2D -->
+      <a href="pages/premiere-sti2d.html" class="class-card card-orange" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-ribbon">STI2D</div>
+        <div class="card-icon">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <div class="card-level">1<sup>re</sup></div>
+        <h3>Première STI2D</h3>
+        <p>Physique-chimie appliquée aux systèmes technologiques – Énergie & matière</p>
+        <div class="card-topics">
+          <span><i class="fas fa-plug"></i> Énergie</span>
+          <span><i class="fas fa-wave-square"></i> Ondes</span>
+          <span><i class="fas fa-industry"></i> Techno</span>
+        </div>
+        <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DERNIÈRES RESSOURCES ===== -->
+<section class="ressources-section" id="ressources">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-clock"></i> Nouveautés</span>
+      <h2>Dernières ressources ajoutées</h2>
+      <p>Les contenus les plus récents pour tous les niveaux</p>
+    </div>
+
+    <div class="filter-bar" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">Tout</button>
+      <button class="filter-btn" data-filter="cours"><i class="fas fa-book"></i> Cours</button>
+      <button class="filter-btn" data-filter="tp"><i class="fas fa-flask"></i> TP</button>
+      <button class="filter-btn" data-filter="exercice"><i class="fas fa-pencil-alt"></i> Exercices</button>
+      <button class="filter-btn" data-filter="video"><i class="fas fa-play"></i> Vidéos</button>
+    </div>
+
+    <div class="ressources-grid" id="ressourcesGrid">
+      <!-- Dynamically populated by JS -->
+    </div>
+
+    <div class="text-center" data-aos="fade-up">
+      <a href="pages/ressources.html" class="btn btn-outline-dark">
+        <i class="fas fa-th-large"></i> Voir toutes les ressources
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="features-section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-star"></i> Pourquoi NinjaPhy ?</span>
+      <h2>Apprendre autrement</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-icon icon-blue"><i class="fas fa-route"></i></div>
+        <h3>Parcours structurés</h3>
+        <p>Des ressources organisées par chapitre, cohérentes avec le programme officiel.</p>
+      </div>
+      <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon icon-green"><i class="fas fa-mobile-alt"></i></div>
+        <h3>100% Mobile</h3>
+        <p>Consulte tes cours depuis ton téléphone, ta tablette ou ton ordinateur.</p>
+      </div>
+      <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-icon icon-purple"><i class="fas fa-video"></i></div>
+        <h3>Vidéos explicatives</h3>
+        <p>Des vidéos courtes pour comprendre les notions clés avant ou après le cours.</p>
+      </div>
+      <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-icon icon-orange"><i class="fas fa-tasks"></i></div>
+        <h3>Exercices corrigés</h3>
+        <p>Des exercices avec corrigés détaillés pour t'entraîner efficacement.</p>
+      </div>
+      <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+        <div class="feature-icon icon-pink"><i class="fas fa-shield-alt"></i></div>
+        <h3>Espace sécurisé RGPD</h3>
+        <p>Ton espace personnel respecte ta vie privée, conforme au RGPD.</p>
+      </div>
+      <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
+        <div class="feature-icon icon-teal"><i class="fas fa-bell"></i></div>
+        <h3>Notifications de cours</h3>
+        <p>Reçois les orientations du prof après chaque séance directement sur le site.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIZ RAPIDE ===== -->
+<section class="quiz-section">
+  <div class="container">
+    <div class="quiz-wrapper" data-aos="zoom-in">
+      <div class="quiz-left">
+        <span class="section-tag"><i class="fas fa-question-circle"></i> Mini-Quiz</span>
+        <h2>Teste tes connaissances !</h2>
+        <p>Un quiz rapide pour réviser entre deux cours. Disponible pour tous les niveaux.</p>
+        <a href="pages/quiz.html" class="btn btn-primary">
+          <i class="fas fa-play"></i> Démarrer un quiz
+        </a>
+      </div>
+      <div class="quiz-right">
+        <div class="quiz-preview" id="quizPreview">
+          <div class="quiz-q">
+            <span class="quiz-tag">Seconde – Chimie</span>
+            <p>Quelle est la formule chimique de l'eau ?</p>
+          </div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="checkAnswer(this, false)">CO₂</button>
+            <button class="quiz-opt" onclick="checkAnswer(this, true)">H₂O</button>
+            <button class="quiz-opt" onclick="checkAnswer(this, false)">NaCl</button>
+            <button class="quiz-opt" onclick="checkAnswer(this, false)">O₂</button>
+          </div>
+          <div class="quiz-feedback" id="quizFeedback"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AGENDA ===== -->
+<section class="agenda-section" id="agenda">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-calendar-alt"></i> Planning</span>
+      <h2>Agenda & Prochains devoirs</h2>
+    </div>
+    <div class="agenda-grid">
+      <div class="agenda-card" data-aos="fade-right">
+        <h3><i class="fas fa-calendar-week"></i> Cette semaine</h3>
+        <div class="agenda-list" id="agendaList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+      <div class="agenda-card" data-aos="fade-left">
+        <h3><i class="fas fa-bell"></i> Orientations récentes</h3>
+        <div class="orientations-list" id="orientationsList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <span class="logo-icon">⚛</span>
+          <span class="logo-text">Ninja<span class="accent">Phy</span></span>
+        </a>
+        <p>Site pédagogique de physique-chimie pour les lycéens. Créé par un professeur passionné.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Pronote"><i class="fas fa-school"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Classes</h4>
+        <ul>
+          <li><a href="pages/seconde.html">Seconde</a></li>
+          <li><a href="pages/premiere-es.html">1re ES</a></li>
+          <li><a href="pages/terminale-es.html">Terminale ES</a></li>
+          <li><a href="pages/premiere-sti2d.html">1re STI2D</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="pages/ressources.html">Tous les cours</a></li>
+          <li><a href="pages/videos.html">Vidéos</a></li>
+          <li><a href="pages/quiz.html">Quiz</a></li>
+          <li><a href="pages/espace-eleve.html">Espace Élève</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="pages/contact.html">Contact</a></li>
+          <li><a href="pages/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="pages/rgpd.html">Politique RGPD</a></li>
+          <li><a href="pages/admin.html"><i class="fas fa-lock"></i> Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy – Tous droits réservés |
+        <a href="pages/rgpd.html">RGPD</a> |
+        <a href="pages/mentions-legales.html">Mentions légales</a>
+      </p>
+      <p class="footer-made">Fait avec <i class="fas fa-heart"></i> pour mes élèves</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" aria-label="Retour en haut">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
+</body>
+</html>

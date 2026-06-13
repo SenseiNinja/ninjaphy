@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vidéos – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">⚛</span>
+      <span class="logo-text">Ninja<span class="accent">Phy</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html"><i class="fas fa-home"></i> Accueil</a></li>
+      <li class="dropdown">
+        <a href="#"><i class="fas fa-graduation-cap"></i> Classes <i class="fas fa-chevron-down small"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="seconde.html"><span class="badge badge-blue">2de</span> Seconde</a></li>
+          <li><a href="premiere-es.html"><span class="badge badge-green">1re ES</span> Première ES</a></li>
+          <li><a href="terminale-es.html"><span class="badge badge-purple">Tle ES</span> Terminale ES</a></li>
+          <li><a href="premiere-sti2d.html"><span class="badge badge-orange">1re STI2D</span> Première STI2D</a></li>
+        </ul>
+      </li>
+      <li><a href="ressources.html"><i class="fas fa-book-open"></i> Ressources</a></li>
+      <li><a href="videos.html" class="active"><i class="fas fa-play-circle"></i> Vidéos</a></li>
+      <li><a href="espace-eleve.html"><i class="fas fa-user-graduate"></i> Espace Élève</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <a href="espace-eleve.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero" style="background:linear-gradient(135deg,#7f1d1d,#dc2626,#ef4444)">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Accueil</a>
+      <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+      <span>Vidéos</span>
+    </div>
+    <h1><i class="fas fa-play-circle"></i> Vidéos pédagogiques</h1>
+    <p>Des vidéos courtes pour comprendre les notions clés avant ou après le cours</p>
+  </div>
+</section>
+
+<section style="padding:4rem 0">
+  <div class="container">
+    <div class="filter-bar" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">Tout</button>
+      <button class="filter-btn" data-filter="2de"><span class="badge badge-blue" style="margin-right:4px">2de</span> Seconde</button>
+      <button class="filter-btn" data-filter="1es"><span class="badge badge-green" style="margin-right:4px">1re</span> ES</button>
+      <button class="filter-btn" data-filter="tes"><span class="badge badge-purple" style="margin-right:4px">Tle</span> ES</button>
+      <button class="filter-btn" data-filter="1sti2d"><span class="badge badge-orange" style="margin-right:4px">STI2D</span> STI2D</button>
+    </div>
+
+    <div class="videos-grid" id="videosGrid" data-aos="fade-up"></div>
+  </div>
+</section>
+
+<!-- Modal vidéo -->
+<div id="videoModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:2000;align-items:center;justify-content:center;">
+  <div style="position:relative;width:90%;max-width:800px">
+    <button onclick="closeVideo()" style="position:absolute;top:-3rem;right:0;background:none;border:none;color:white;font-size:2rem;cursor:pointer">
+      <i class="fas fa-times"></i>
+    </button>
+    <div id="videoEmbed" style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000"></div>
+    <p id="videoTitle" style="color:white;margin-top:1rem;font-weight:700;font-size:1.1rem;font-family:var(--font)"></p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy</p>
+      <p class="footer-made">Fait avec <i class="fas fa-heart"></i> pour mes élèves</p>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="../js/main.js"></script>
+<script>
+const videos = [
+  {
+    classe:'2de', tag:'tag-2de', tagLabel:'2de',
+    title:'Atomes et molécules – Introduction',
+    desc:'Comprendre la différence entre atome, molécule et ion en 8 minutes.',
+    duration:'8:24', thumb:'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=600',
+    youtubeId:'', embedUrl:''
+  },
+  {
+    classe:'2de', tag:'tag-2de', tagLabel:'2de',
+    title:'La loi d\'Ohm expliquée simplement',
+    desc:'Tension, intensité et résistance – la loi fondamentale des circuits.',
+    duration:'6:15', thumb:'https://images.pexels.com/photos/1476321/pexels-photo-1476321.jpeg?auto=compress&cs=tinysrgb&w=600',
+    youtubeId:'', embedUrl:''
+  },
+  {
+    classe:'1es', tag:'tag-1es', tagLabel:'1re ES',
+    title:'L\'effet de serre – Animation',
+    desc:'Comment les gaz à effet de serre réchauffent notre planète.',
+    duration:'10:02', thumb:'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=600',
+    youtubeId:'', embedUrl:''
+  },
+  {
+    classe:'1es', tag:'tag-1es', tagLabel:'1re ES',
+    title:'Les lois de Kepler illustrées',
+    desc:'Orbites planétaires et lois de Kepler avec animations 3D.',
+    duration:'12:30', thumb:'https://images.pexels.com/photos/586063/pexels-photo-586063.jpeg?auto=compress&cs=tinysrgb&w=600',
+    youtubeId:'', embedUrl:''
+  },
+  {
+    classe:'tes', tag:'tag-tes', tagLabel:'Tle ES',
+    title:'L\'IA et les réseaux de neurones',
+    desc:'Comment fonctionne une intelligence artificielle – explication visuelle.',
+    duration:'14:45', thumb:'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600',
+    youtubeId:'', embedUrl:''
+  },
+  {
+    classe:'tes', tag:'tag-tes', tagLabel:'Tle ES',
+    title:'La radioactivité et le carbone 14',
+    desc:'Datation radioactive et demi-vie expliqués avec exemples.',
+    duration:'9:18', thumb:'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg?auto=compress&cs=tinysrgb&w=600',
+    youtubeId:'', embedUrl:''
+  },
+  {
+    classe:'1sti2d', tag:'tag-1sti2d', tagLabel:'1re STI2D',
+    title:'L\'oscilloscope – Mode d\'emploi',
+    desc:'Utiliser l\'oscilloscope pour mesurer fréquence et amplitude.',
+    duration:'11:00', thumb:'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=600',
+    youtubeId:'', embedUrl:''
+  },
+  {
+    classe:'1sti2d', tag:'tag-1sti2d', tagLabel:'1re STI2D',
+    title:'Rendement et pertes énergétiques',
+    desc:'Chaîne d\'énergie, rendement η et calculs d\'application.',
+    duration:'7:40', thumb:'https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg?auto=compress&cs=tinysrgb&w=600',
+    youtubeId:'', embedUrl:''
+  },
+];
+
+let currentFilter = 'all';
+
+function renderVideos(filter) {
+  const grid = document.getElementById('videosGrid');
+  const filtered = filter === 'all' ? videos : videos.filter(v => v.classe === filter);
+  grid.innerHTML = filtered.map((v, i) => `
+    <div class="video-card" data-aos="fade-up" data-aos-delay="${(i%3)*100}">
+      <div class="video-thumb" onclick="openVideo('${v.title}', '${v.embedUrl}')">
+        <img src="${v.thumb}" alt="${v.title}" loading="lazy" />
+        <div class="video-play"><i class="fas fa-play"></i></div>
+        <span class="video-duration">${v.duration}</span>
+      </div>
+      <div class="video-info">
+        <div style="margin-bottom:0.4rem">
+          <span class="tag ${v.tag}">${v.tagLabel}</span>
+        </div>
+        <h4>${v.title}</h4>
+        <p>${v.desc}</p>
+      </div>
+    </div>
+  `).join('');
+  if (typeof AOS !== 'undefined') AOS.refresh();
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderVideos(btn.dataset.filter);
+  });
+});
+
+function openVideo(title, url) {
+  const modal = document.getElementById('videoModal');
+  const embed = document.getElementById('videoEmbed');
+  const titleEl = document.getElementById('videoTitle');
+  modal.style.display = 'flex';
+  titleEl.textContent = title;
+  if (url) {
+    embed.innerHTML = `<iframe width="100%" height="100%" src="${url}" frameborder="0" allowfullscreen></iframe>`;
+  } else {
+    embed.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:white;font-family:var(--font);text-align:center;padding:2rem">
+      <div><i class="fas fa-video" style="font-size:3rem;margin-bottom:1rem;display:block;opacity:0.5"></i>
+      <p>Vidéo à venir – Le professeur ajoutera le lien prochainement.</p></div>
+    </div>`;
+  }
+}
+
+function closeVideo() {
+  document.getElementById('videoModal').style.display = 'none';
+  document.getElementById('videoEmbed').innerHTML = '';
+}
+
+document.getElementById('videoModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeVideo();
+});
+
+renderVideos('all');
+</script>
+</body>
+</html>

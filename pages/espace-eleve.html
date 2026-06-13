@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace Élève – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">⚛</span>
+      <span class="logo-text">Ninja<span class="accent">Phy</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html"><i class="fas fa-home"></i> Accueil</a></li>
+      <li><a href="espace-eleve.html" class="active"><i class="fas fa-user-graduate"></i> Espace Élève</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="login-section" id="loginSection">
+  <div class="login-card" id="loginCard">
+    <div class="logo-area">
+      <div style="font-size:3rem">⚛</div>
+      <h2>Espace Élève</h2>
+      <p>Connecte-toi pour accéder à tes ressources et suivre ta progression</p>
+    </div>
+
+    <div class="rgpd-notice">
+      <i class="fas fa-shield-alt"></i>
+      <span>Vos données sont protégées conformément au RGPD. Aucune information personnelle n'est partagée avec des tiers. <a href="rgpd.html" style="color:var(--primary)">En savoir plus</a>.</span>
+    </div>
+
+    <!-- Tabs -->
+    <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem;">
+      <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')" style="flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--primary);background:var(--primary);color:white;font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s">
+        <i class="fas fa-sign-in-alt"></i> Connexion
+      </button>
+      <button class="tab-btn" id="tabRegister" onclick="switchTab('register')" style="flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--border);background:transparent;color:var(--text-muted);font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s">
+        <i class="fas fa-user-plus"></i> S'inscrire
+      </button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="formLogin" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> Prénom et nom</label>
+        <input type="text" placeholder="Ex : Marie Dupont" required autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-graduation-cap"></i> Classe</label>
+        <select required>
+          <option value="">-- Sélectionner votre classe --</option>
+          <option>2de A</option>
+          <option>2de B</option>
+          <option>1re ES</option>
+          <option>Tle ES</option>
+          <option>1re STI2D</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-key"></i> Code d'accès (fourni par le prof)</label>
+        <input type="password" placeholder="••••••••" required autocomplete="current-password" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">
+        <i class="fas fa-sign-in-alt"></i> Accéder à mon espace
+      </button>
+    </form>
+
+    <!-- Register Form -->
+    <form id="formRegister" style="display:none" onsubmit="handleRegister(event)">
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> Prénom</label>
+        <input type="text" placeholder="Ton prénom uniquement" required />
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-graduation-cap"></i> Classe</label>
+        <select required>
+          <option value="">-- Sélectionner votre classe --</option>
+          <option>2de A</option>
+          <option>2de B</option>
+          <option>1re ES</option>
+          <option>Tle ES</option>
+          <option>1re STI2D</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-key"></i> Code de classe (fourni par le prof)</label>
+        <input type="text" placeholder="Code à 6 caractères" required maxlength="6" />
+      </div>
+      <div class="rgpd-notice">
+        <i class="fas fa-info-circle"></i>
+        <span>En vous inscrivant, seul votre prénom et votre classe sont enregistrés localement. Aucun email ni mot de passe personnel n'est requis.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+        <input type="checkbox" id="rgpdCheck" required style="width:auto" />
+        <label for="rgpdCheck" style="font-size:0.82rem;color:var(--text-muted);cursor:pointer">
+          J'accepte la <a href="rgpd.html" style="color:var(--primary)">politique RGPD</a> du site
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">
+        <i class="fas fa-user-plus"></i> Créer mon profil
+      </button>
+    </form>
+
+    <div class="form-divider"><span>ou</span></div>
+    <div class="form-footer">
+      <p>Code perdu ? <a href="contact.html">Contacter le professeur</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Dashboard (hidden by default, shown after login) -->
+<section class="dashboard-section" id="dashboardSection" style="display:none; padding: calc(var(--nav-height) + 2rem) 1.5rem 4rem; min-height:100vh;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <h1 style="font-size:1.75rem;font-weight:900">Bonjour, <span id="dashName" style="color:var(--primary)"></span> ! 👋</h1>
+        <p style="color:var(--text-muted)">Classe : <strong id="dashClasse"></strong> | Dernière connexion : aujourd'hui</p>
+      </div>
+      <button onclick="handleLogout()" class="btn btn-outline" style="font-size:0.85rem">
+        <i class="fas fa-sign-out-alt"></i> Se déconnecter
+      </button>
+    </div>
+
+    <!-- Orientations du prof -->
+    <div style="background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(244,114,182,0.1));border:1px solid rgba(99,102,241,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;">
+      <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.75rem"><i class="fas fa-bullhorn" style="color:var(--primary)"></i> Orientation du prof – Dernière séance</h3>
+      <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7">
+        📌 <strong>Pour votre prochaine séance :</strong> Revoir le chapitre 3 (réactions chimiques), faire les exercices 4, 5 et 6 page 78. Regarder la vidéo explicative sur la conservation de la masse.
+      </p>
+      <div style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <a href="#" class="chapitre-btn btn-cours" style="text-decoration:none"><i class="fas fa-book"></i> Cours Ch.3</a>
+        <a href="#" class="chapitre-btn btn-exo" style="text-decoration:none"><i class="fas fa-pencil-alt"></i> Exercices</a>
+        <a href="#" class="chapitre-btn btn-tp" style="text-decoration:none"><i class="fas fa-play"></i> Vidéo</a>
+      </div>
+    </div>
+
+    <!-- Progression -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem;">
+      <div class="progress-card">
+        <h4><i class="fas fa-book"></i> Cours consultés</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:40%"></div></div>
+        <div class="progress-pct">4 / 10</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-pencil-alt"></i> Exercices faits</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:25%"></div></div>
+        <div class="progress-pct">5 / 20</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-star"></i> Score quiz</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:70%"></div></div>
+        <div class="progress-pct">70% de réussite</div>
+      </div>
+    </div>
+
+    <!-- Ressources recommandées -->
+    <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem"><i class="fas fa-thumbs-up" style="color:var(--primary)"></i> Recommandés pour toi</h3>
+    <div class="ressources-grid" style="margin-bottom:0">
+      <div class="ressource-card">
+        <div class="ressource-header">
+          <div class="type-icon type-cours"><i class="fas fa-book"></i></div>
+          <div class="ressource-meta"><h4>Constitution de la matière</h4>
+          <div class="ressource-badges"><span class="tag tag-2de">2de</span></div></div>
+        </div>
+        <p class="ressource-desc">Atomes, molécules, ions – bases indispensables du chapitre 1.</p>
+        <div class="ressource-footer">
+          <span class="ressource-date"><i class="far fa-calendar"></i> 10 juin</span>
+          <a href="#" class="btn-ressource">Lire <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="ressource-card">
+        <div class="ressource-header">
+          <div class="type-icon type-video"><i class="fas fa-play"></i></div>
+          <div class="ressource-meta"><h4>Vidéo – Conservation de la masse</h4>
+          <div class="ressource-badges"><span class="tag tag-2de">2de</span></div></div>
+        </div>
+        <p class="ressource-desc">Explication visuelle de la loi de conservation avec expériences.</p>
+        <div class="ressource-footer">
+          <span class="ressource-date"><i class="far fa-calendar"></i> 8 juin</span>
+          <a href="#" class="btn-ressource">Voir <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="pageFooter">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy | <a href="rgpd.html">RGPD</a></p>
+      <p class="footer-made">Fait avec <i class="fas fa-heart"></i> pour mes élèves</p>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<script src="../js/main.js"></script>
+<script>
+function switchTab(tab) {
+  const isLogin = tab === 'login';
+  document.getElementById('formLogin').style.display = isLogin ? 'block' : 'none';
+  document.getElementById('formRegister').style.display = isLogin ? 'none' : 'block';
+  document.getElementById('tabLogin').style.cssText = isLogin
+    ? 'flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--primary);background:var(--primary);color:white;font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s'
+    : 'flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--border);background:transparent;color:var(--text-muted);font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s';
+  document.getElementById('tabRegister').style.cssText = isLogin
+    ? 'flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--border);background:transparent;color:var(--text-muted);font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s'
+    : 'flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--primary);background:var(--primary);color:white;font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s';
+}
+
+function handleLogin(e) {
+  e.preventDefault();
+  const name = e.target.querySelector('input[type="text"]').value;
+  const classe = e.target.querySelector('select').value;
+  sessionStorage.setItem('np-user', JSON.stringify({ name, classe }));
+  showDashboard(name, classe);
+}
+
+function handleRegister(e) {
+  e.preventDefault();
+  const name = e.target.querySelector('input[type="text"]').value;
+  const classe = e.target.querySelector('select').value;
+  sessionStorage.setItem('np-user', JSON.stringify({ name, classe }));
+  showDashboard(name, classe);
+}
+
+function showDashboard(name, classe) {
+  document.getElementById('loginSection').style.display = 'none';
+  document.getElementById('dashboardSection').style.display = 'block';
+  document.getElementById('dashName').textContent = name.split(' ')[0];
+  document.getElementById('dashClasse').textContent = classe;
+}
+
+function handleLogout() {
+  sessionStorage.removeItem('np-user');
+  document.getElementById('loginSection').style.display = 'flex';
+  document.getElementById('dashboardSection').style.display = 'none';
+}
+
+// Auto login if session
+const saved = sessionStorage.getItem('np-user');
+if (saved) {
+  const { name, classe } = JSON.parse(saved);
+  showDashboard(name, classe);
+}
+</script>
+</body>
+</html>

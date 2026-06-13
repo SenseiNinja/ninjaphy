@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique RGPD – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .legal-content { max-width:800px; margin:0 auto; padding:calc(var(--nav-height)+3rem) 1.5rem 4rem; }
+    .legal-content h1 { font-size:2rem; font-weight:900; margin-bottom:0.5rem; }
+    .legal-content h2 { font-size:1.1rem; font-weight:800; margin:2rem 0 0.75rem; color:var(--primary); }
+    .legal-content p, .legal-content li { font-size:0.92rem; color:var(--text-muted); line-height:1.8; }
+    .legal-content ul { padding-left:1.5rem; margin-bottom:1rem; }
+    .legal-content ul li { margin-bottom:0.3rem; }
+    .legal-date { color:var(--text-light); font-size:0.85rem; margin-bottom:2rem; }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">⚛</span><span class="logo-text">Ninja<span class="accent">Phy</span></span></a>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <a href="../index.html" class="btn-login"><i class="fas fa-home"></i> Accueil</a>
+    </div>
+  </div>
+</nav>
+
+<div class="legal-content">
+  <h1><i class="fas fa-shield-alt" style="color:var(--primary)"></i> Politique de confidentialité & RGPD</h1>
+  <p class="legal-date">Dernière mise à jour : juin 2025</p>
+
+  <div class="alert alert-success">
+    <i class="fas fa-check-circle"></i>
+    <span>Ce site a été conçu en respectant la vie privée des élèves dès la conception (<em>Privacy by Design</em>). Il est conforme au RGPD (Règlement UE 2016/679).</span>
+  </div>
+
+  <h2>1. Qui est responsable du traitement ?</h2>
+  <p>Le responsable du traitement est le professeur de physique-chimie, auteur du site NinjaPhy, exerçant dans un établissement scolaire public français.</p>
+
+  <h2>2. Quelles données sont collectées ?</h2>
+  <p>NinjaPhy applique le principe de <strong>minimisation des données</strong>. Seules les informations strictement nécessaires sont traitées :</p>
+  <ul>
+    <li><strong>Prénom</strong> de l'élève (saisie volontaire, non vérifiée)</li>
+    <li><strong>Classe</strong> (liste prédéfinie, aucune identification précise)</li>
+    <li><strong>Préférences d'affichage</strong> (thème clair/sombre) – stockées uniquement en localStorage du navigateur</li>
+  </ul>
+  <p><strong>Ce qui n'est PAS collecté :</strong></p>
+  <ul>
+    <li>❌ Nom de famille</li>
+    <li>❌ Adresse email</li>
+    <li>❌ Mot de passe personnel</li>
+    <li>❌ Adresse IP (aucun serveur tiers d'analytics)</li>
+    <li>❌ Données de navigation détaillées</li>
+    <li>❌ Données biométriques ou sensibles</li>
+  </ul>
+
+  <h2>3. Comment les données sont-elles stockées ?</h2>
+  <p>Les données de session (prénom, classe) sont stockées exclusivement dans la <strong>mémoire de votre navigateur</strong> (sessionStorage), et sont automatiquement supprimées à la fermeture de l'onglet. Aucune donnée n'est envoyée à un serveur externe.</p>
+
+  <h2>4. Cookies</h2>
+  <p>Ce site n'utilise <strong>aucun cookie tiers</strong>. Seul le localStorage est utilisé pour mémoriser votre choix de thème (clair/sombre). Il ne s'agit pas d'un cookie de tracking.</p>
+
+  <h2>5. Partage des données</h2>
+  <p>Aucune donnée n'est partagée avec des tiers. Le site est entièrement statique (HTML/CSS/JavaScript) et ne communique avec aucun serveur externe.</p>
+
+  <h2>6. Droits des utilisateurs</h2>
+  <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+  <ul>
+    <li><strong>Droit d'accès</strong> – Vous pouvez demander quelles données vous concernent</li>
+    <li><strong>Droit de rectification</strong> – Correction des données inexactes</li>
+    <li><strong>Droit à l'effacement</strong> – Suppression immédiate possible via le navigateur (effacer les données de site)</li>
+    <li><strong>Droit d'opposition</strong> – Vous pouvez refuser d'utiliser l'espace élève</li>
+  </ul>
+  <p>Pour exercer ces droits, contactez le professeur via la <a href="contact.html" style="color:var(--primary)">page contact</a>.</p>
+
+  <h2>7. Mineurs et protection des élèves</h2>
+  <p>Ce site est destiné à des élèves de lycée (15-18 ans). Conformément aux directives de l'Éducation Nationale et au RGPD :</p>
+  <ul>
+    <li>Aucune donnée permettant d'identifier précisément un élève n'est collectée</li>
+    <li>L'utilisation de l'espace élève est optionnelle</li>
+    <li>Les codes d'accès sont distribués en classe par l'enseignant</li>
+  </ul>
+
+  <h2>8. Hébergement</h2>
+  <p>Ce site est hébergé sur <strong>GitHub Pages</strong> (Microsoft), dont les serveurs sont situés aux États-Unis. Des garanties contractuelles (Standard Contractual Clauses) sont en place. Aucune donnée personnelle des élèves n'est envoyée à cet hébergeur.</p>
+
+  <h2>9. Contact RGPD</h2>
+  <p>Pour toute question relative à vos données : <a href="contact.html" style="color:var(--primary)">Formulaire de contact</a> ou via Pronote.</p>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy | <a href="mentions-legales.html">Mentions légales</a></p>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

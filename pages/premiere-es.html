@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Première ES – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .page-hero { background: linear-gradient(135deg, #064e3b, #059669, #10b981); }
+    .chapitre-num { background: #059669; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">⚛</span>
+      <span class="logo-text">Ninja<span class="accent">Phy</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html"><i class="fas fa-home"></i> Accueil</a></li>
+      <li class="dropdown">
+        <a href="#"><i class="fas fa-graduation-cap"></i> Classes <i class="fas fa-chevron-down small"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="seconde.html"><span class="badge badge-blue">2de</span> Seconde</a></li>
+          <li><a href="premiere-es.html"><span class="badge badge-green">1re ES</span> Première ES</a></li>
+          <li><a href="terminale-es.html"><span class="badge badge-purple">Tle ES</span> Terminale ES</a></li>
+          <li><a href="premiere-sti2d.html"><span class="badge badge-orange">1re STI2D</span> Première STI2D</a></li>
+        </ul>
+      </li>
+      <li><a href="ressources.html"><i class="fas fa-book-open"></i> Ressources</a></li>
+      <li><a href="espace-eleve.html"><i class="fas fa-user-graduate"></i> Espace Élève</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <a href="espace-eleve.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Accueil</a>
+      <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+      <span>Première ES</span>
+    </div>
+    <div class="hero-badge" style="margin-bottom:1rem">
+      <i class="fas fa-sun"></i> Enseignement Scientifique – Programme officiel
+    </div>
+    <h1>Première – Enseignement Scientifique</h1>
+    <p>La Terre, notre planète dans l'Univers · Science, climat et société · Le vivant et son évolution</p>
+  </div>
+</section>
+
+<section class="progress-section">
+  <div class="container">
+    <div class="progress-grid">
+      <div class="progress-card">
+        <h4><i class="fas fa-globe-europe"></i> La Terre dans l'Univers</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:70%"></div></div>
+        <div class="progress-pct">70% du programme</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-cloud-sun-rain"></i> Science, Climat & Société</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:40%"></div></div>
+        <div class="progress-pct">40% du programme</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-dna"></i> Le Vivant</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:25%"></div></div>
+        <div class="progress-pct">25% du programme</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-calculator"></i> Mathématiques ES</h4>
+        <div class="progress-bar-wrap"><div class="progress-bar" style="width:55%"></div></div>
+        <div class="progress-pct">55% du programme</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapitres-section">
+  <div class="container">
+
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-sun" style="color:#f59e0b"></i> Thème 1 – La Terre, notre planète dans l'Univers</h3>
+      <div class="chapitres-list">
+        <div class="chapitre-item" data-aos="fade-up">
+          <div class="chapitre-num">1</div>
+          <div class="chapitre-info">
+            <h4>Mesure du temps et de l'espace dans l'Univers</h4>
+            <p>Distances astronomiques, lumière, unités cosmiques</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="chapitre-num">2</div>
+          <div class="chapitre-info">
+            <h4>Le Soleil, notre étoile</h4>
+            <p>Bilan radiatif, spectre électromagnétique, flux solaire</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="chapitre-num">3</div>
+          <div class="chapitre-info">
+            <h4>La Terre dans le système solaire</h4>
+            <p>Lois de Kepler, gravitation universelle, orbites</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-cloud-sun-rain" style="color:#0ea5e9"></i> Thème 2 – Science, Climat et Société</h3>
+      <div class="chapitres-list">
+        <div class="chapitre-item" data-aos="fade-up">
+          <div class="chapitre-num">4</div>
+          <div class="chapitre-info">
+            <h4>L'effet de serre et le changement climatique</h4>
+            <p>Bilan radiatif terrestre, gaz à effet de serre, forçage radiatif</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="chapitre-num">5</div>
+          <div class="chapitre-info">
+            <h4>Énergie, sources et consommation</h4>
+            <p>Énergies renouvelables, fossiles, conversion et rendement</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="chapitre-num">6</div>
+          <div class="chapitre-info">
+            <h4>Modélisation mathématique du climat</h4>
+            <p>Fonctions, variations, représentations graphiques – suites et modèles</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-dna" style="color:#10b981"></i> Thème 3 – Le Vivant et son évolution</h3>
+      <div class="chapitres-list">
+        <div class="chapitre-item" data-aos="fade-up">
+          <div class="chapitre-num">7</div>
+          <div class="chapitre-info">
+            <h4>Parenté des êtres vivants et évolution</h4>
+            <p>Phylogénèse, sélection naturelle, biodiversité</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="chapitre-num">8</div>
+          <div class="chapitre-info">
+            <h4>Génétique et hérédité</h4>
+            <p>ADN, gènes, mutations, transmission héréditaire</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="padding: 3rem 0; background: var(--bg-card)">
+  <div class="container">
+    <div class="formules-box" data-aos="fade-up">
+      <h4><i class="fas fa-superscript"></i> Formules – Première ES</h4>
+      <div class="formule">
+        <span class="formule-sym">F = G·m₁m₂/d²</span>
+        <span class="formule-desc">Loi de gravitation universelle (G = 6,67×10⁻¹¹ N·m²/kg²)</span>
+      </div>
+      <div class="formule">
+        <span class="formule-sym">T² = k·a³</span>
+        <span class="formule-desc">3e loi de Kepler – période au carré / demi-grand axe au cube</span>
+      </div>
+      <div class="formule">
+        <span class="formule-sym">Φ = P/S</span>
+        <span class="formule-desc">Flux (W/m²) – puissance reçue par unité de surface</span>
+      </div>
+      <div class="formule">
+        <span class="formule-sym">c = λ × f</span>
+        <span class="formule-desc">Célérité de la lumière (c = 3×10⁸ m/s)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy</p>
+      <p class="footer-made">Fait avec <i class="fas fa-heart"></i> pour mes élèves</p>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ressources – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">⚛</span>
+      <span class="logo-text">Ninja<span class="accent">Phy</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html"><i class="fas fa-home"></i> Accueil</a></li>
+      <li class="dropdown">
+        <a href="#"><i class="fas fa-graduation-cap"></i> Classes <i class="fas fa-chevron-down small"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="seconde.html"><span class="badge badge-blue">2de</span> Seconde</a></li>
+          <li><a href="premiere-es.html"><span class="badge badge-green">1re ES</span> Première ES</a></li>
+          <li><a href="terminale-es.html"><span class="badge badge-purple">Tle ES</span> Terminale ES</a></li>
+          <li><a href="premiere-sti2d.html"><span class="badge badge-orange">1re STI2D</span> Première STI2D</a></li>
+        </ul>
+      </li>
+      <li><a href="ressources.html" class="active"><i class="fas fa-book-open"></i> Ressources</a></li>
+      <li><a href="videos.html"><i class="fas fa-play-circle"></i> Vidéos</a></li>
+      <li><a href="espace-eleve.html"><i class="fas fa-user-graduate"></i> Espace Élève</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <a href="espace-eleve.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero" style="background:linear-gradient(135deg,#1e1b4b,#4338ca,#6366f1)">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Accueil</a>
+      <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+      <span>Ressources</span>
+    </div>
+    <h1><i class="fas fa-book-open"></i> Toutes les ressources</h1>
+    <p>Cours, TP, exercices et fiches pour tous les niveaux</p>
+  </div>
+</section>
+
+<section style="padding: 4rem 0;">
+  <div class="container">
+
+    <!-- Search bar -->
+    <div style="max-width:500px;margin:0 auto 2rem;position:relative" data-aos="fade-up">
+      <input type="text" id="searchInput" placeholder="Rechercher une ressource..." oninput="filterSearch()"
+        style="width:100%;padding:0.9rem 1rem 0.9rem 3rem;border:2px solid var(--border);border-radius:50px;background:var(--bg-card);color:var(--text);font-family:var(--font);font-size:0.95rem;outline:none;transition:border-color 0.3s">
+      <i class="fas fa-search" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--text-light)"></i>
+    </div>
+
+    <!-- Filters -->
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem" data-aos="fade-up">
+      <select id="filterClasse" onchange="filterSearch()"
+        style="padding:0.5rem 1rem;border:2px solid var(--border);border-radius:50px;background:var(--bg-card);color:var(--text);font-family:var(--font);font-weight:700;cursor:pointer;outline:none">
+        <option value="">Toutes les classes</option>
+        <option value="2de">Seconde</option>
+        <option value="1es">Première ES</option>
+        <option value="tes">Terminale ES</option>
+        <option value="1sti2d">1re STI2D</option>
+      </select>
+      <select id="filterType" onchange="filterSearch()"
+        style="padding:0.5rem 1rem;border:2px solid var(--border);border-radius:50px;background:var(--bg-card);color:var(--text);font-family:var(--font);font-weight:700;cursor:pointer;outline:none">
+        <option value="">Tous les types</option>
+        <option value="cours">Cours</option>
+        <option value="tp">TP</option>
+        <option value="exercice">Exercices</option>
+        <option value="video">Vidéos</option>
+        <option value="fiche">Fiches mémo</option>
+      </select>
+    </div>
+
+    <div class="ressources-grid" id="allRessourcesGrid" data-aos="fade-up"></div>
+
+    <p id="noResult" style="text-align:center;color:var(--text-muted);display:none;padding:3rem 0">
+      <i class="fas fa-search" style="font-size:2rem;margin-bottom:0.5rem;display:block"></i>
+      Aucune ressource trouvée pour votre recherche.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy</p>
+      <p class="footer-made">Fait avec <i class="fas fa-heart"></i> pour mes élèves</p>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="../js/main.js"></script>
+<script>
+const allRessources = [
+  { type:'cours', classe:'2de', tag:'tag-2de', tagLabel:'2de', title:'L\'entité chimique', desc:'Atomes, molécules, ions – formules et représentations de Lewis', date:'10 juin 2025' },
+  { type:'cours', classe:'2de', tag:'tag-2de', tagLabel:'2de', title:'Corps purs et mélanges', desc:'Dissolution, concentration, identification d\'espèces chimiques', date:'5 juin 2025' },
+  { type:'tp', classe:'2de', tag:'tag-2de', tagLabel:'2de', title:'TP – Solutions aqueuses', desc:'Préparer des solutions et mesurer les concentrations', date:'3 juin 2025' },
+  { type:'exercice', classe:'2de', tag:'tag-2de', tagLabel:'2de', title:'Exercices – Vecteur vitesse', desc:'MRU et MRUA – calculs et graphiques', date:'1 juin 2025' },
+  { type:'cours', classe:'1es', tag:'tag-1es', tagLabel:'1re ES', title:'Le Soleil, notre étoile', desc:'Bilan radiatif, spectre électromagnétique, flux solaire', date:'8 juin 2025' },
+  { type:'exercice', classe:'1es', tag:'tag-1es', tagLabel:'1re ES', title:'Exercices – Énergie solaire', desc:'Calculs de flux et bilan énergétique du Soleil', date:'4 juin 2025' },
+  { type:'tp', classe:'1es', tag:'tag-1es', tagLabel:'1re ES', title:'TP – Effet de serre simplifié', desc:'Modélisation de l\'effet de serre avec capteurs', date:'2 juin 2025' },
+  { type:'cours', classe:'tes', tag:'tag-tes', tagLabel:'Tle ES', title:'L\'intelligence artificielle', desc:'Algorithmes d\'apprentissage, réseaux de neurones, éthique', date:'9 juin 2025' },
+  { type:'video', classe:'tes', tag:'tag-tes', tagLabel:'Tle ES', title:'Vidéo – L\'IA expliquée', desc:'Comprendre les réseaux de neurones en 10 minutes', date:'6 juin 2025' },
+  { type:'cours', classe:'tes', tag:'tag-tes', tagLabel:'Tle ES', title:'Radioactivité et datation', desc:'Décroissance radioactive, demi-vie, carbone 14', date:'1 juin 2025' },
+  { type:'fiche', classe:'tes', tag:'tag-tes', tagLabel:'Tle ES', title:'Fiche mémo – Formules Terminale ES', desc:'Toutes les formules essentielles pour le bac', date:'28 mai 2025' },
+  { type:'cours', classe:'1sti2d', tag:'tag-1sti2d', tagLabel:'1re STI2D', title:'Puissance et énergie électriques', desc:'Loi d\'Ohm, puissance, effet Joule – applications', date:'7 juin 2025' },
+  { type:'tp', classe:'1sti2d', tag:'tag-1sti2d', tagLabel:'1re STI2D', title:'TP – Oscilloscope et signaux', desc:'Mesure de fréquence et d\'amplitude avec oscilloscope', date:'5 juin 2025' },
+  { type:'exercice', classe:'1sti2d', tag:'tag-1sti2d', tagLabel:'1re STI2D', title:'Exercices – Rendement énergétique', desc:'Chaînes d\'énergie, rendement, pertes', date:'3 juin 2025' },
+  { type:'fiche', classe:'2de', tag:'tag-2de', tagLabel:'2de', title:'Fiche mémo – Physique 2de', desc:'Résumé des formules et lois essentielles', date:'30 mai 2025' },
+  { type:'fiche', classe:'1es', tag:'tag-1es', tagLabel:'1re ES', title:'Fiche mémo – Lois de Kepler', desc:'Les trois lois et leurs applications', date:'27 mai 2025' },
+];
+
+const typeIcons = { cours:'fas fa-book', tp:'fas fa-flask', exercice:'fas fa-pencil-alt', video:'fas fa-play', fiche:'fas fa-sticky-note' };
+const typeLabels = { cours:'Cours', tp:'TP', exercice:'Exercice', video:'Vidéo', fiche:'Fiche mémo' };
+
+function renderAll(data) {
+  const grid = document.getElementById('allRessourcesGrid');
+  const noResult = document.getElementById('noResult');
+  if (!data.length) { grid.innerHTML = ''; noResult.style.display = 'block'; return; }
+  noResult.style.display = 'none';
+  grid.innerHTML = data.map(r => `
+    <div class="ressource-card">
+      <div class="ressource-header">
+        <div class="type-icon type-${r.type}"><i class="${typeIcons[r.type]}"></i></div>
+        <div class="ressource-meta">
+          <h4>${r.title}</h4>
+          <div class="ressource-badges">
+            <span class="tag ${r.tag}">${r.tagLabel}</span>
+            <span class="tag" style="background:#475569">${typeLabels[r.type]}</span>
+          </div>
+        </div>
+      </div>
+      <p class="ressource-desc">${r.desc}</p>
+      <div class="ressource-footer">
+        <span class="ressource-date"><i class="far fa-calendar"></i> ${r.date}</span>
+        <a href="#" class="btn-ressource">Accéder <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterSearch() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const classe = document.getElementById('filterClasse').value;
+  const type = document.getElementById('filterType').value;
+  const filtered = allRessources.filter(r => {
+    const matchSearch = !q || r.title.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q);
+    const matchClasse = !classe || r.classe === classe;
+    const matchType = !type || r.type === type;
+    return matchSearch && matchClasse && matchType;
+  });
+  renderAll(filtered);
+}
+
+renderAll(allRessources);
+</script>
+</body>
+</html>

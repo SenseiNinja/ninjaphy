@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seconde – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .page-hero { background: linear-gradient(135deg, #1e3a5f, #1d4ed8, #0ea5e9); }
+    .chapitre-num { background: #1d4ed8; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">⚛</span>
+      <span class="logo-text">Ninja<span class="accent">Phy</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html"><i class="fas fa-home"></i> Accueil</a></li>
+      <li class="dropdown">
+        <a href="#"><i class="fas fa-graduation-cap"></i> Classes <i class="fas fa-chevron-down small"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="seconde.html"><span class="badge badge-blue">2de</span> Seconde</a></li>
+          <li><a href="premiere-es.html"><span class="badge badge-green">1re ES</span> Première ES</a></li>
+          <li><a href="terminale-es.html"><span class="badge badge-purple">Tle ES</span> Terminale ES</a></li>
+          <li><a href="premiere-sti2d.html"><span class="badge badge-orange">1re STI2D</span> Première STI2D</a></li>
+        </ul>
+      </li>
+      <li><a href="ressources.html"><i class="fas fa-book-open"></i> Ressources</a></li>
+      <li><a href="videos.html"><i class="fas fa-play-circle"></i> Vidéos</a></li>
+      <li><a href="espace-eleve.html"><i class="fas fa-user-graduate"></i> Espace Élève</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <a href="espace-eleve.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Accueil</a>
+      <i class="fas fa-chevron-right" style="font-size:0.7rem"></i>
+      <span>Seconde</span>
+    </div>
+    <div class="hero-badge" style="margin-bottom:1rem">
+      <i class="fas fa-atom"></i> Physique-Chimie – Programme officiel
+    </div>
+    <h1>Classe de Seconde</h1>
+    <p>Constitution et transformation de la matière · Mouvements et interactions · Ondes et signaux</p>
+  </div>
+</section>
+
+<!-- Progression -->
+<section class="progress-section">
+  <div class="container">
+    <div class="progress-grid">
+      <div class="progress-card">
+        <h4><i class="fas fa-flask"></i> Chimie</h4>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" style="width:60%"></div>
+        </div>
+        <div class="progress-pct">60% du programme</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-bolt"></i> Physique</h4>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" style="width:45%"></div>
+        </div>
+        <div class="progress-pct">45% du programme</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-microscope"></i> TP réalisés</h4>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" style="width:50%"></div>
+        </div>
+        <div class="progress-pct">5/10 TP</div>
+      </div>
+      <div class="progress-card">
+        <h4><i class="fas fa-check-circle"></i> Exercices</h4>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" style="width:30%"></div>
+        </div>
+        <div class="progress-pct">12/40 exercices</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Chapitres -->
+<section class="chapitres-section">
+  <div class="container">
+
+    <!-- CHIMIE -->
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-flask" style="color:#3b82f6"></i> Chimie – Constitution et transformations</h3>
+      <div class="chapitres-list">
+
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="chapitre-num">1</div>
+          <div class="chapitre-info">
+            <h4>L'entité chimique</h4>
+            <p>Atomes, molécules, ions – formules et représentations de Lewis</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours" onclick="openContent('cours','Ch1-entite-chimique')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo" onclick="openContent('exo','Ch1-entite-chimique')"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="chapitre-num">2</div>
+          <div class="chapitre-info">
+            <h4>Corps purs et mélanges</h4>
+            <p>Dissolution, concentration, identification d'espèces chimiques</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="chapitre-num">3</div>
+          <div class="chapitre-info">
+            <h4>Réactions chimiques</h4>
+            <p>Transformation chimique, équation de réaction, conservation de la masse</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="150">
+          <div class="chapitre-num">4</div>
+          <div class="chapitre-info">
+            <h4>Chimie organique – introduction</h4>
+            <p>Alcanes, groupes caractéristiques, nomenclature de base</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PHYSIQUE MÉCANIQUE -->
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-bolt" style="color:#f59e0b"></i> Physique – Mouvements et interactions</h3>
+      <div class="chapitres-list">
+
+        <div class="chapitre-item" data-aos="fade-up">
+          <div class="chapitre-num">5</div>
+          <div class="chapitre-info">
+            <h4>Description d'un mouvement</h4>
+            <p>Référentiel, trajectoire, vitesse moyenne et instantanée</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="chapitre-num">6</div>
+          <div class="chapitre-info">
+            <h4>Les forces et interactions</h4>
+            <p>Gravitation, poids, réaction normale, frottements – loi de Newton</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="chapitre-num">7</div>
+          <div class="chapitre-info">
+            <h4>Énergie – travail et puissance</h4>
+            <p>Énergie cinétique, potentielle, mécanique, conservation</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PHYSIQUE ONDES -->
+    <div class="chapitre-group" data-aos="fade-up">
+      <h3 class="chapitre-group-title"><i class="fas fa-wave-square" style="color:#8b5cf6"></i> Physique – Ondes et signaux</h3>
+      <div class="chapitres-list">
+
+        <div class="chapitre-item" data-aos="fade-up">
+          <div class="chapitre-num">8</div>
+          <div class="chapitre-info">
+            <h4>Propagation d'une onde</h4>
+            <p>Onde mécanique, lumineuse – célérité, fréquence, longueur d'onde</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+
+        <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="chapitre-num">9</div>
+          <div class="chapitre-info">
+            <h4>La lumière : nature et propriétés</h4>
+            <p>Spectre lumineux, dispersion, couleurs, applications</p>
+          </div>
+          <div class="chapitre-actions">
+            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Formules clés -->
+<section style="padding: 3rem 0; background: var(--bg-card)">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-superscript"></i> Mémo</span>
+      <h2>Formules essentielles – 2de</h2>
+    </div>
+    <div class="formules-box" data-aos="fade-up">
+      <h4><i class="fas fa-superscript"></i> Formules clés</h4>
+      <div class="formule">
+        <span class="formule-sym">v = d / t</span>
+        <span class="formule-desc">Vitesse moyenne (m/s) – distance sur temps</span>
+      </div>
+      <div class="formule">
+        <span class="formule-sym">C = n / V</span>
+        <span class="formule-desc">Concentration molaire (mol/L) – quantité sur volume</span>
+      </div>
+      <div class="formule">
+        <span class="formule-sym">λ = v / f</span>
+        <span class="formule-desc">Longueur d'onde (m) – célérité sur fréquence</span>
+      </div>
+      <div class="formule">
+        <span class="formule-sym">Ec = ½ mv²</span>
+        <span class="formule-desc">Énergie cinétique (J) – masse × vitesse²</span>
+      </div>
+      <div class="formule">
+        <span class="formule-sym">P = mg</span>
+        <span class="formule-desc">Poids (N) – masse × intensité de pesanteur (g ≈ 9,8 N/kg)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy | <a href="rgpd.html">RGPD</a></p>
+      <p class="footer-made">Fait avec <i class="fas fa-heart"></i> pour mes élèves</p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="../js/main.js"></script>
+<script>
+function openContent(type, slug) {
+  // Placeholder – ouvrira une modale ou une page dédiée
+  alert('Contenu à venir : ' + type + ' – ' + slug);
+}
+</script>
+</body>
+</html>

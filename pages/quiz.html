@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .quiz-app { min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: calc(var(--nav-height) + 2rem) 1.5rem 3rem; background: linear-gradient(135deg, #0f0c29, #302b63); }
+    .quiz-box { background:var(--bg-card); border-radius:var(--radius); padding:2.5rem; width:100%; max-width:600px; box-shadow:var(--shadow-lg); }
+    .quiz-progress-bar { height:6px; background:var(--border); border-radius:50px; margin-bottom:2rem; overflow:hidden; }
+    .quiz-progress-fill { height:100%; background:linear-gradient(90deg,var(--primary),var(--secondary)); border-radius:50px; transition:width 0.5s ease; }
+    .quiz-score-badge { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.2); color:var(--primary); padding:0.3rem 0.9rem; border-radius:50px; font-size:0.82rem; font-weight:700; margin-bottom:1.5rem; }
+    .quiz-question { font-size:1.2rem; font-weight:800; margin-bottom:1.5rem; line-height:1.5; }
+    .quiz-choices { display:flex; flex-direction:column; gap:0.75rem; }
+    .quiz-choice {
+      padding:0.9rem 1.25rem; border:2px solid var(--border); border-radius:var(--radius-sm);
+      background:var(--bg); color:var(--text); font-family:var(--font); font-weight:700; font-size:0.95rem;
+      cursor:pointer; text-align:left; transition:all 0.2s; display:flex; align-items:center; gap:0.75rem;
+    }
+    .quiz-choice:hover:not(:disabled) { border-color:var(--primary); background:rgba(99,102,241,0.05); }
+    .quiz-choice.correct { border-color:#10b981; background:rgba(16,185,129,0.1); color:#10b981; }
+    .quiz-choice.wrong { border-color:#ef4444; background:rgba(239,68,68,0.1); color:#ef4444; }
+    .quiz-choice-letter { width:30px; height:30px; border-radius:50%; background:var(--border); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:900; flex-shrink:0; transition:background 0.2s; }
+    .quiz-choice.correct .quiz-choice-letter { background:#10b981; color:white; }
+    .quiz-choice.wrong .quiz-choice-letter { background:#ef4444; color:white; }
+    .quiz-explanation { margin-top:1rem; padding:0.9rem 1.25rem; background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.2); border-radius:var(--radius-sm); font-size:0.87rem; line-height:1.6; display:none; }
+    .result-stars { font-size:3rem; text-align:center; margin:1rem 0; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">⚛</span>
+      <span class="logo-text">Ninja<span class="accent">Phy</span></span>
+    </a>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <a href="../index.html" class="btn-outline" style="padding:0.4rem 1rem;font-size:0.85rem;border-radius:8px;border:2px solid var(--border);font-family:var(--font);font-weight:700;display:inline-flex;align-items:center;gap:0.4rem">
+        <i class="fas fa-arrow-left"></i> Retour
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="quiz-app">
+  <div class="quiz-box" id="quizBox">
+
+    <!-- Écran de sélection -->
+    <div id="screenSelect">
+      <div style="text-align:center;margin-bottom:2rem">
+        <div style="font-size:3rem">🥷</div>
+        <h2 style="font-size:1.5rem;font-weight:900;margin:0.5rem 0">Quiz NinjaPhy</h2>
+        <p style="color:var(--text-muted)">Teste tes connaissances en physique-chimie !</p>
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-graduation-cap"></i> Classe</label>
+        <select id="selectClasse" style="width:100%;padding:0.7rem 1rem;border:2px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:var(--font);font-size:0.95rem;outline:none;cursor:pointer">
+          <option value="2de">Seconde</option>
+          <option value="1es">Première ES</option>
+          <option value="tes">Terminale ES</option>
+          <option value="1sti2d">Première STI2D</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-list-ol"></i> Nombre de questions</label>
+        <select id="selectNb" style="width:100%;padding:0.7rem 1rem;border:2px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:var(--font);font-size:0.95rem;outline:none;cursor:pointer">
+          <option value="5">5 questions</option>
+          <option value="10" selected>10 questions</option>
+          <option value="15">15 questions</option>
+        </select>
+      </div>
+      <button onclick="startQuiz()" class="btn btn-primary btn-full" style="margin-top:0.5rem">
+        <i class="fas fa-play"></i> Démarrer le quiz
+      </button>
+    </div>
+
+    <!-- Écran de quiz -->
+    <div id="screenQuiz" style="display:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
+        <span class="quiz-score-badge"><i class="fas fa-star"></i> Score : <span id="scoreDisplay">0</span></span>
+        <span style="font-size:0.85rem;color:var(--text-muted);font-weight:700">
+          <span id="qCurrent">1</span> / <span id="qTotal">10</span>
+        </span>
+      </div>
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <div class="quiz-tag" id="qTag" style="margin-bottom:0.75rem"></div>
+      <p class="quiz-question" id="qText"></p>
+      <div class="quiz-choices" id="qChoices"></div>
+      <div class="quiz-explanation" id="qExplanation"></div>
+      <button onclick="nextQuestion()" id="btnNext" class="btn btn-primary" style="margin-top:1.5rem;display:none">
+        Question suivante <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <!-- Écran de résultat -->
+    <div id="screenResult" style="display:none;text-align:center">
+      <div class="result-stars" id="resultStars"></div>
+      <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:0.5rem" id="resultTitle"></h2>
+      <p style="color:var(--text-muted);margin-bottom:1rem" id="resultSub"></p>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem">
+        <div style="font-size:3rem;font-weight:900;color:var(--primary)" id="resultScore"></div>
+        <div style="font-size:0.9rem;color:var(--text-muted)">Bonnes réponses</div>
+      </div>
+      <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap">
+        <button onclick="restartQuiz()" class="btn btn-primary">
+          <i class="fas fa-redo"></i> Recommencer
+        </button>
+        <a href="../index.html" class="btn btn-outline">
+          <i class="fas fa-home"></i> Accueil
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="../js/main.js"></script>
+<script>
+const quizData = {
+  '2de': [
+    { q:'Quelle est la formule chimique de l\'eau ?', opts:['H₂O₂','CO₂','H₂O','NaCl'], correct:2, exp:'L\'eau est composée de 2 atomes d\'hydrogène et 1 atome d\'oxygène : H₂O.' },
+    { q:'Quelle est l\'unité de la vitesse dans le SI ?', opts:['km/h','m/s','cm/s','m/min'], correct:1, exp:'Dans le Système International, la vitesse s\'exprime en mètres par seconde (m/s).' },
+    { q:'Un atome est électriquement neutre car il possède :', opts:['Plus d\'électrons que de protons','Autant de protons que d\'électrons','Uniquement des neutrons','Plus de neutrons que d\'électrons'], correct:1, exp:'Un atome neutre contient autant de protons (charge +) que d\'électrons (charge -).' },
+    { q:'Quelle est la valeur approximative de g sur Terre ?', opts:['1 N/kg','5 N/kg','9,8 N/kg','100 N/kg'], correct:2, exp:'L\'intensité de la pesanteur sur Terre est g ≈ 9,8 N/kg (souvent arrondi à 10 N/kg).' },
+    { q:'La relation entre longueur d\'onde, célérité et fréquence est :', opts:['λ = f/v','v = λ × f','f = v × λ','λ = v × f'], correct:1, exp:'La célérité v = λ × f, où λ est la longueur d\'onde en m et f la fréquence en Hz.' },
+    { q:'Qu\'est-ce qu\'un ion ?', opts:['Un atome sans neutron','Un atome chargé électriquement','Une molécule neutre','Un proton isolé'], correct:1, exp:'Un ion est un atome (ou groupe d\'atomes) qui a perdu ou gagné des électrons, et qui est donc chargé.' },
+    { q:'L\'énergie cinétique d\'un objet dépend de :', opts:['Sa couleur et sa forme','Sa masse et sa vitesse','Sa température uniquement','Son volume'], correct:1, exp:'Ec = ½mv² – l\'énergie cinétique dépend de la masse m (kg) et de la vitesse v (m/s).' },
+    { q:'Lors d\'une réaction chimique, la masse totale est :', opts:['Augmentée','Diminuée','Conservée','Divisée par 2'], correct:2, exp:'Loi de conservation de la masse (Lavoisier) : la masse totale des réactifs = masse totale des produits.' },
+    { q:'Quel est le symbole de l\'oxygène dans le tableau périodique ?', opts:['Ox','O','Og','Or'], correct:1, exp:'L\'oxygène est noté O dans le tableau périodique. Son numéro atomique est Z = 8.' },
+    { q:'Une solution est dite "concentrée" quand :', opts:['Elle contient peu de soluté','Elle est bleue','Elle contient beaucoup de soluté par litre','Elle est à haute température'], correct:2, exp:'La concentration C = n/V (mol/L) est grande quand la quantité de soluté par litre est importante.' },
+    { q:'La célérité de la lumière dans le vide est :', opts:['300 km/s','3×10⁶ m/s','3×10⁸ m/s','300 m/s'], correct:2, exp:'c = 3×10⁸ m/s ≈ 300 000 km/s – c\'est la plus grande vitesse connue dans l\'Univers.' },
+    { q:'Lors d\'une chute libre, quelle force agit principalement sur l\'objet ?', opts:['La réaction normale','Le frottement','Le poids','La force d\'Archimède'], correct:2, exp:'En chute libre (sans frottement), seul le poids P = mg agit sur l\'objet.' },
+    { q:'Une onde sonore se propage dans :', opts:['Le vide uniquement','Un milieu matériel uniquement','Le vide et la matière','L\'eau uniquement'], correct:1, exp:'Le son est une onde mécanique : elle nécessite un milieu matériel (air, eau, solide) pour se propager.' },
+    { q:'L\'alcane à 1 carbone est :', opts:['L\'éthane','Le méthane','Le propane','Le butane'], correct:1, exp:'Méthane (CH₄, 1C), éthane (C₂H₆, 2C), propane (C₃H₈, 3C), butane (C₄H₁₀, 4C).' },
+    { q:'La concentration molaire s\'exprime en :', opts:['g/L','mol/L','mol/kg','L/mol'], correct:1, exp:'La concentration molaire C (ou [X]) s\'exprime en mol/L (ou M pour molaire).' },
+  ],
+  '1es': [
+    { q:'Qui a énoncé les lois du mouvement des planètes ?', opts:['Newton','Galilée','Kepler','Einstein'], correct:2, exp:'Johannes Kepler (1571-1630) a établi les 3 lois du mouvement des planètes à partir des observations de Tycho Brahé.' },
+    { q:'Le flux solaire reçu par la Terre est d\'environ :', opts:['136 W/m²','1360 W/m²','13600 W/m²','136 kW/m²'], correct:1, exp:'La constante solaire vaut environ 1361 W/m² – c\'est la puissance du Soleil reçue par m² hors atmosphère.' },
+    { q:'L\'effet de serre est dû à :', opts:['L\'ozone uniquement','Des gaz absorbant le rayonnement infrarouge','La pollution lumineuse','La chaleur du Soleil direct'], correct:1, exp:'CO₂, H₂O, CH₄... absorbent le rayonnement IR émis par la Terre et le renvoient vers le sol.' },
+    { q:'La 3ème loi de Kepler relie :', opts:['La masse et le rayon','La période et le demi-grand axe','La vitesse et la distance','La force et l\'accélération'], correct:1, exp:'T² = k × a³ : le carré de la période est proportionnel au cube du demi-grand axe de l\'orbite.' },
+    { q:'Quelle énergie est renouvelable ?', opts:['Charbon','Pétrole','Énergie solaire','Gaz naturel'], correct:2, exp:'L\'énergie solaire est renouvelable car le Soleil est une source quasi-inépuisable à l\'échelle humaine.' },
+    { q:'L\'unité astronomique (UA) correspond à :', opts:['La distance Terre-Lune','La distance Terre-Soleil','1 année-lumière','Le rayon du Soleil'], correct:1, exp:'1 UA ≈ 150 millions de km = distance moyenne entre la Terre et le Soleil.' },
+    { q:'Que mesure l\'année-lumière ?', opts:['Un temps','Une masse','Une distance','Une énergie'], correct:2, exp:'L\'année-lumière est la distance parcourue par la lumière en 1 an : environ 9,46×10¹⁵ m.' },
+    { q:'La photosynthèse convertit l\'énergie :', opts:['Chimique en thermique','Lumineuse en chimique','Électrique en mécanique','Nucléaire en thermique'], correct:1, exp:'Les plantes utilisent l\'énergie lumineuse pour produire du glucose (énergie chimique) : 6CO₂ + 6H₂O → glucose + O₂.' },
+    { q:'La sélection naturelle a été théorisée par :', opts:['Mendel','Pasteur','Darwin','Lamarck'], correct:2, exp:'Charles Darwin (1859, "De l\'origine des espèces") a proposé la théorie de l\'évolution par sélection naturelle.' },
+    { q:'Le forçage radiatif mesure :', opts:['La vitesse du vent','Le déséquilibre énergétique de la Terre','La pression atmosphérique','L\'épaisseur de la couche d\'ozone'], correct:1, exp:'Le forçage radiatif (W/m²) quantifie la perturbation du bilan énergétique terrestre due à un facteur externe.' },
+  ],
+  'tes': [
+    { q:'La loi de décroissance radioactive est :', opts:['N(t) = N₀ × e^(λt)','N(t) = N₀ × (½)^(t/t½)','N(t) = N₀ + λt','N(t) = N₀ / t'], correct:1, exp:'N(t) = N₀ × (½)^(t/t½) où t½ est la demi-vie : durée au bout de laquelle la moitié des noyaux s\'est désintégrée.' },
+    { q:'Un réseau de neurones artificiel s\'inspire de :', opts:['L\'ADN','Le cerveau humain','Les plantes','Les cristaux'], correct:1, exp:'Les réseaux de neurones artificiels (RNN) sont inspirés du fonctionnement des neurones biologiques du cerveau.' },
+    { q:'L\'énergie d\'un photon est donnée par :', opts:['E = mc²','E = hf','E = ½mv²','E = qU'], correct:1, exp:'E = h×f, où h = 6,63×10⁻³⁴ J·s (constante de Planck) et f la fréquence du rayonnement.' },
+    { q:'Le niveau sonore en décibels est calculé avec :', opts:['L = I/I₀','L = 10 × log(I/I₀)','L = log(I)','L = 20 × I'], correct:1, exp:'L (dB) = 10 × log(I/I₀), où I₀ = 10⁻¹² W/m² est le seuil d\'audibilité.' },
+    { q:'La nucléosynthèse stellaire produit les éléments :', opts:['Uniquement H et He','Jusqu\'au fer dans les étoiles','Seulement dans le Big Bang','Uniquement dans les supernovae'], correct:1, exp:'Les étoiles fusionnent les noyaux jusqu\'au fer (Z=26). Les éléments plus lourds sont formés lors des supernovae.' },
+    { q:'Le chiffrement RSA utilise :', opts:['La physique quantique','La factorisation en nombres premiers','La radioactivité','Les ondes électromagnétiques'], correct:1, exp:'RSA repose sur la difficulté de factoriser de grands nombres en facteurs premiers – base de la cryptographie asymétrique.' },
+    { q:'Une liaison peptidique unit :', opts:['Deux molécules de glucose','Deux acides aminés','Un nucléotide et une base','Deux acides gras'], correct:1, exp:'La liaison peptidique unit le groupe carboxyle (-COOH) d\'un acide aminé au groupe amine (-NH₂) du suivant.' },
+    { q:'L\'apprentissage automatique (machine learning) repose sur :', opts:['Des règles programmées manuellement','L\'ajustement de paramètres à partir de données','La mémoire humaine','Des algorithmes fixes'], correct:1, exp:'Le ML ajuste les poids d\'un modèle en minimisant une fonction de perte, à partir d\'un jeu de données d\'entraînement.' },
+    { q:'La demi-vie du carbone 14 est de :', opts:['5730 ans','1000 ans','100 000 ans','230 ans'], correct:0, exp:'La demi-vie du ¹⁴C est de 5730 ans, ce qui permet de dater des matières organiques jusqu\'à ~50 000 ans.' },
+    { q:'Un ultrason a une fréquence :', opts:['Inférieure à 20 Hz','Entre 20 Hz et 20 kHz','Supérieure à 20 kHz','Égale à 0 Hz'], correct:2, exp:'Les ultrasons ont des fréquences > 20 000 Hz (20 kHz), au-delà du seuil d\'audibilité humaine.' },
+  ],
+  '1sti2d': [
+    { q:'L\'unité de la puissance électrique est :', opts:['Volt','Ampère','Watt','Joule'], correct:2, exp:'La puissance électrique P = U × I s\'exprime en Watts (W). Le joule est l\'unité d\'énergie.' },
+    { q:'La relation P = U²/R est valable pour :', opts:['Un condensateur','Une résistance (loi d\'Ohm)','Un moteur','Une bobine d\'induction'], correct:1, exp:'Pour une résistance : P = UI = U²/R = RI². Ces trois formulations sont équivalentes grâce à U = RI.' },
+    { q:'Le rendement η d\'un système est toujours :', opts:['Supérieur à 1','Égal à 1','Inférieur ou égal à 1','Négatif'], correct:2, exp:'Le rendement η = P_utile/P_absorbée ≤ 1, car il y a toujours des pertes (effet Joule, frottements...).' },
+    { q:'T = 1/f signifie que la période est :', opts:['Le double de la fréquence','L\'inverse de la fréquence','Le carré de la fréquence','La racine de la fréquence'], correct:1, exp:'La période T (en s) est l\'inverse de la fréquence f (en Hz) : une onde à 50 Hz a une période de 20 ms.' },
+    { q:'Q = mcΔT permet de calculer :', opts:['Une charge électrique','Un flux radiatif','Une énergie thermique échangée','Une puissance mécanique'], correct:2, exp:'Q = m×c×ΔT est l\'équation des échanges thermiques : m masse (kg), c capacité thermique (J/kg·K), ΔT variation de T.' },
+    { q:'La fibre optique transmet l\'information via :', opts:['Des électrons','Des ondes sonores','Des photons (lumière)','Des micro-ondes'], correct:2, exp:'La fibre optique guide la lumière par réflexion totale interne, permettant un débit très élevé.' },
+    { q:'Les ondes électromagnétiques se propagent dans :', opts:['Un milieu matériel uniquement','Le vide uniquement','Le vide et les milieux matériels','L\'eau uniquement'], correct:2, exp:'Contrairement aux ondes mécaniques, les ondes EM (lumière, Wi-Fi, radio...) se propagent dans le vide ET la matière.' },
+    { q:'La résistance thermique Rth mesure :', opts:['La résistance au courant électrique','L\'opposition aux transferts de chaleur','La dureté d\'un matériau','La conductivité électrique'], correct:1, exp:'Rth (K/W) caractérise la capacité d\'un matériau à s\'opposer au transfert de chaleur. Plus Rth est grand, meilleur est l\'isolant.' },
+    { q:'En conduction thermique, le flux de chaleur est :', opts:['Indépendant de l\'épaisseur','Proportionnel à la surface et inversement proportionnel à l\'épaisseur','Uniquement radiatif','Constant quelle que soit la température'], correct:1, exp:'Φ = λ × S × ΔT / e, où λ = conductivité thermique, S = surface, e = épaisseur du matériau.' },
+    { q:'La tension efficace (Ueff) d\'un signal sinusoïdal est liée à l\'amplitude Um par :', opts:['Ueff = Um','Ueff = Um/2','Ueff = Um/√2','Ueff = 2Um'], correct:2, exp:'Pour un signal sinusoïdal : Ueff = Um/√2 ≈ 0,707 × Um. Par exemple, le secteur 230V est une valeur efficace.' },
+  ]
+};
+
+let questions = [], currentQ = 0, score = 0, answered = false, totalQ = 10;
+
+function startQuiz() {
+  const classe = document.getElementById('selectClasse').value;
+  totalQ = parseInt(document.getElementById('selectNb').value);
+  const pool = [...quizData[classe]];
+  questions = pool.sort(() => Math.random()-0.5).slice(0, Math.min(totalQ, pool.length));
+  currentQ = 0; score = 0;
+  document.getElementById('screenSelect').style.display = 'none';
+  document.getElementById('screenQuiz').style.display = 'block';
+  document.getElementById('qTotal').textContent = questions.length;
+  showQuestion();
+}
+
+function showQuestion() {
+  if (currentQ >= questions.length) { showResult(); return; }
+  const q = questions[currentQ];
+  answered = false;
+  document.getElementById('btnNext').style.display = 'none';
+  document.getElementById('qExplanation').style.display = 'none';
+  document.getElementById('scoreDisplay').textContent = score;
+  document.getElementById('qCurrent').textContent = currentQ + 1;
+  document.getElementById('progressFill').style.width = `${((currentQ)/questions.length)*100}%`;
+  document.getElementById('qText').textContent = q.q;
+
+  const letters = ['A','B','C','D'];
+  document.getElementById('qChoices').innerHTML = q.opts.map((opt,i) => `
+    <button class="quiz-choice" onclick="selectAnswer(${i})">
+      <span class="quiz-choice-letter">${letters[i]}</span>
+      ${opt}
+    </button>
+  `).join('');
+}
+
+function selectAnswer(i) {
+  if (answered) return;
+  answered = true;
+  const q = questions[currentQ];
+  const choices = document.querySelectorAll('.quiz-choice');
+  choices.forEach(c => c.disabled = true);
+  choices[i].classList.add(i === q.correct ? 'correct' : 'wrong');
+  if (i !== q.correct) choices[q.correct].classList.add('correct');
+  if (i === q.correct) score++;
+  document.getElementById('scoreDisplay').textContent = score;
+  const exp = document.getElementById('qExplanation');
+  exp.textContent = '💡 ' + q.exp;
+  exp.style.display = 'block';
+  document.getElementById('btnNext').style.display = 'inline-flex';
+}
+
+function nextQuestion() {
+  currentQ++;
+  showQuestion();
+}
+
+function showResult() {
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('screenQuiz').style.display = 'none';
+  document.getElementById('screenResult').style.display = 'block';
+  const pct = Math.round((score/questions.length)*100);
+  document.getElementById('resultScore').textContent = `${score} / ${questions.length}`;
+  document.getElementById('resultSub').textContent = `Score : ${pct}%`;
+  let stars = '⭐', title = 'Continue tes efforts !';
+  if (pct >= 80) { stars = '⭐⭐⭐'; title = 'Excellent ! Tu es un vrai ninja !'; }
+  else if (pct >= 60) { stars = '⭐⭐'; title = 'Bien joué ! Tu progresses !'; }
+  document.getElementById('resultStars').textContent = stars;
+  document.getElementById('resultTitle').textContent = title;
+}
+
+function restartQuiz() {
+  document.getElementById('screenResult').style.display = 'none';
+  document.getElementById('screenSelect').style.display = 'block';
+}
+</script>
+</body>
+</html>
