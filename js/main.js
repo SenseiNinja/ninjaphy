@@ -14,7 +14,94 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initHamburger();
   initFooterYear();
+  injectAccessModal();
 });
+
+// ===== CONTRÔLE D'ACCÈS AUX DOCUMENTS =====
+// Appelée par chaque bouton de document (Cours, Activité, TP, Exos)
+// url : lien vers le document (PDF, page HTML…), '#' si pas encore disponible
+function openDoc(url) {
+  const user = sessionStorage.getItem('np-user');
+  if (user) {
+    // Élève connecté → accès autorisé
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener');
+    } else {
+      showAccessModal('soon');
+    }
+  } else {
+    // Non connecté → afficher la modale de connexion
+    showAccessModal('login');
+  }
+}
+
+function injectAccessModal() {
+  if (document.getElementById('npAccessModal')) return;
+  const modal = document.createElement('div');
+  modal.id = 'npAccessModal';
+  modal.style.cssText = [
+    'display:none', 'position:fixed', 'inset:0', 'z-index:9999',
+    'background:rgba(0,0,0,0.55)', 'backdrop-filter:blur(4px)',
+    'justify-content:center', 'align-items:center', 'padding:1rem'
+  ].join(';');
+  modal.innerHTML = `
+    <div style="background:var(--bg-card);border-radius:20px;padding:2rem;max-width:400px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3);text-align:center;position:relative">
+      <button onclick="closeAccessModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-muted)"><i class="fas fa-times"></i></button>
+
+      <!-- Vue : connexion requise -->
+      <div id="npModalLogin">
+        <div style="font-size:3rem;margin-bottom:0.75rem">🔒</div>
+        <h3 style="font-weight:900;margin-bottom:0.5rem">Accès réservé</h3>
+        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin-bottom:1.5rem">
+          Ce document est réservé aux élèves connectés.<br>
+          Identifie-toi avec le code fourni par ton professeur.
+        </p>
+        <a href="espace-eleve.html" class="btn btn-primary btn-full" style="display:block;text-decoration:none;margin-bottom:0.75rem">
+          <i class="fas fa-sign-in-alt"></i> Se connecter
+        </a>
+        <button onclick="closeAccessModal()" style="width:100%;padding:0.6rem;border:1.5px solid var(--border);border-radius:10px;background:none;color:var(--text-muted);cursor:pointer;font-family:var(--font);font-weight:700">
+          Retour
+        </button>
+      </div>
+
+      <!-- Vue : document bientôt disponible -->
+      <div id="npModalSoon" style="display:none">
+        <div style="font-size:3rem;margin-bottom:0.75rem">🚧</div>
+        <h3 style="font-weight:900;margin-bottom:0.5rem">Bientôt disponible</h3>
+        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin-bottom:1.5rem">
+          Ce document sera mis en ligne prochainement par votre professeur.
+        </p>
+        <button onclick="closeAccessModal()" class="btn btn-primary btn-full" style="border:none;cursor:pointer;font-family:var(--font)">
+          OK
+        </button>
+      </div>
+    </div>
+  `;
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeAccessModal(); });
+  document.body.appendChild(modal);
+}
+
+function showAccessModal(view) {
+  const modal = document.getElementById('npAccessModal');
+  if (!modal) return;
+  document.getElementById('npModalLogin').style.display = view === 'login' ? 'block' : 'none';
+  document.getElementById('npModalSoon').style.display  = view === 'soon'  ? 'block' : 'none';
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  // Adapter le lien "Se connecter" selon la profondeur de page
+  const link = modal.querySelector('a[href="espace-eleve.html"]');
+  if (link) {
+    const depth = (window.location.pathname.match(/\//g) || []).length;
+    link.href = depth >= 2 ? 'espace-eleve.html' : 'pages/espace-eleve.html';
+  }
+}
+
+function closeAccessModal() {
+  const modal = document.getElementById('npAccessModal');
+  if (modal) modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
 
 // ===== THEME (Dark/Light) =====
 function initTheme() {

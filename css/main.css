@@ -774,7 +774,7 @@ img { max-width: 100%; }
 .chapitre-info { flex: 1; }
 .chapitre-info h4 { font-size: 0.98rem; font-weight: 800; margin-bottom: 0.2rem; }
 .chapitre-info p { font-size: 0.82rem; color: var(--text-muted); }
-.chapitre-actions { display: flex; gap: 0.4rem; }
+.chapitre-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: flex-end; }
 .chapitre-btn {
   display: flex; align-items: center; gap: 0.3rem;
   padding: 0.35rem 0.75rem;
@@ -787,6 +787,8 @@ img { max-width: 100%; }
 }
 .btn-cours { border-color: #3b82f6; color: #3b82f6; }
 .btn-cours:hover { background: #3b82f6; color: white; }
+.btn-activite { border-color: #8b5cf6; color: #8b5cf6; }
+.btn-activite:hover { background: #8b5cf6; color: white; }
 .btn-tp { border-color: #10b981; color: #10b981; }
 .btn-tp:hover { background: #10b981; color: white; }
 .btn-exo { border-color: #f59e0b; color: #f59e0b; }

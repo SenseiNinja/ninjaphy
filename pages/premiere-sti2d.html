@@ -90,6 +90,14 @@
 <section class="chapitres-section">
   <div class="container">
 
+    <div class="chapitres-legende" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin-bottom:1.5rem;font-size:0.78rem;color:var(--text-muted)">
+      <span style="font-weight:800">Légende :</span>
+      <span><i class="fas fa-book" style="color:#3b82f6"></i> Cours</span>
+      <span><i class="fas fa-file-alt" style="color:#8b5cf6"></i> Activité documentaire</span>
+      <span><i class="fas fa-flask" style="color:#10b981"></i> TP (activité expérimentale)</span>
+      <span><i class="fas fa-pencil-alt" style="color:#f59e0b"></i> Exercices</span>
+    </div>
+
     <!-- MESURE ET INCERTITUDES -->
     <div class="chapitre-group" data-aos="fade-up">
       <h3 class="chapitre-group-title"><i class="fas fa-ruler-combined" style="color:#f59e0b"></i> Domaine 1 – Mesure et incertitudes</h3>
@@ -101,9 +109,10 @@
             <p>Système international (SI), sources d'erreurs (aléatoires/systématiques), incertitude-type u, écriture du résultat x ± u</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
       </div>
@@ -120,8 +129,9 @@
             <p>Formes d'énergie, puissance P, E = P×t, rendement η = P<sub>utile</sub>/P<sub>totale</sub>, énergies renouvelables et fossiles</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
@@ -131,9 +141,10 @@
             <p>Combustions (alcanes, alcools), pouvoir calorifique (kJ/kg), carburants fossiles et agro-carburants, bilan de combustion</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
@@ -143,9 +154,10 @@
             <p>Circuits (loi des nœuds/mailles), tension U, intensité I, grandeurs périodiques, valeur efficace, loi d'Ohm U=RI, puissance P=UI</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="150">
@@ -155,9 +167,10 @@
             <p>Température (°C et K), capacité thermique massique Q=mcΔT, conduction, convection, rayonnement, isolation</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="200">
@@ -167,9 +180,10 @@
             <p>Mouvement de translation, forces (N), travail W=F·d·cosθ, énergie cinétique E<sub>c</sub>=½mv², énergie potentielle, bilan énergétique</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="250">
@@ -179,9 +193,10 @@
             <p>Irradiance E (W/m²), laser, conversion photovoltaïque, rendement d'un panneau solaire</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
       </div>
@@ -198,8 +213,9 @@
             <p>Familles (métalliques, organiques, minéraux, composites), structure (Lewis, masses molaires, concentrations), critères de choix</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
@@ -209,9 +225,10 @@
             <p>Combustion des alcanes, alcènes, alcools ; bilan de combustion ; carburants fossiles et agro-carburants, impact environnemental</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
@@ -221,9 +238,10 @@
             <p>Demi-équations électroniques, couples Ox/Réd, réactions d'oxydo-réduction, corrosion des métaux, fonctionnement des piles</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
       </div>
@@ -240,9 +258,10 @@
             <p>Ondes mécaniques et électromagnétiques, longitudinale/transversale, ondes périodiques : période T, fréquence f, longueur d'onde λ, v=λf</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
@@ -252,9 +271,10 @@
             <p>Célérité du son (≈ 340 m/s dans l'air), intensité et puissance acoustiques, niveau sonore en dB, gamme audible</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
@@ -264,8 +284,9 @@
             <p>Spectre EM (rayons γ → ondes radio), sources lumineuses, lumière visible, applications industrielles (IR, UV, micro-ondes)</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
       </div>

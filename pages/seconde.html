@@ -101,6 +101,14 @@
 <section class="chapitres-section">
   <div class="container">
 
+    <div class="chapitres-legende" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin-bottom:1.5rem;font-size:0.78rem;color:var(--text-muted)">
+      <span style="font-weight:800">Légende :</span>
+      <span><i class="fas fa-book" style="color:#3b82f6"></i> Cours</span>
+      <span><i class="fas fa-file-alt" style="color:#8b5cf6"></i> Activité documentaire</span>
+      <span><i class="fas fa-flask" style="color:#10b981"></i> TP (activité expérimentale)</span>
+      <span><i class="fas fa-pencil-alt" style="color:#f59e0b"></i> Exercices</span>
+    </div>
+
     <!-- THÈME 1 : CONSTITUTION ET TRANSFORMATIONS -->
     <div class="chapitre-group" data-aos="fade-up">
       <h3 class="chapitre-group-title"><i class="fas fa-flask" style="color:#3b82f6"></i> Thème 1 – Constitution et transformations de la matière</h3>
@@ -113,9 +121,12 @@
             <p>Corps purs / mélanges homogènes et hétérogènes, dissolution, concentration massique C<sub>m</sub> = m/V</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('cours-modele.html')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité 1</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité 2</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP 1</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP 2</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -126,8 +137,9 @@
             <p>Atome (Z, A, isotopes), cortège électronique (couches K,L,M), ions monoatomiques, règle du duet/octet, molécules, représentation de Lewis</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -138,8 +150,9 @@
             <p>Constante d'Avogadro N<sub>A</sub>, masse molaire M, n = m/M, concentration molaire C = n/V</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -150,9 +163,10 @@
             <p>Changements d'état (fusion, vaporisation, sublimation), courbe de refroidissement, énergie échangée</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -163,9 +177,10 @@
             <p>Réaction chimique, équation bilan équilibrée, réactif limitant, stœchiométrie, synthèse au laboratoire</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -176,8 +191,9 @@
             <p>Radioactivité α, β, γ – loi de conservation (Z, A), fusion et fission nucléaires, isotopes</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -196,9 +212,10 @@
             <p>Référentiel, système, trajectoire, vecteur vitesse instantanée – mouvement rectiligne uniforme</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -209,8 +226,9 @@
             <p>Force (vecteur), gravitation universelle F=Gm₁m₂/d², poids P=mg, principe des actions réciproques (3e loi Newton)</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -221,9 +239,10 @@
             <p>1re loi de Newton, chute libre sans frottements, mouvement parabolique</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -242,9 +261,10 @@
             <p>Vibration mécanique, fréquence f et période T, gamme audible (20 Hz–20 kHz), niveau d'intensité sonore en dB</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -255,9 +275,10 @@
             <p>Lumière et milieux, réfraction (loi de Snell-Descartes), lentilles convergentes, œil réduit et vergence</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 
@@ -268,9 +289,10 @@
             <p>Loi d'Ohm U=RI, loi des nœuds et des mailles, capteurs (thermistance, photorésistance), tension et courant</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
 

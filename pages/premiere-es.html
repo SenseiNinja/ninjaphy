@@ -90,6 +90,14 @@
 <section class="chapitres-section">
   <div class="container">
 
+    <div class="chapitres-legende" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin-bottom:1.5rem;font-size:0.78rem;color:var(--text-muted)">
+      <span style="font-weight:800">Légende :</span>
+      <span><i class="fas fa-book" style="color:#3b82f6"></i> Cours</span>
+      <span><i class="fas fa-file-alt" style="color:#8b5cf6"></i> Activité documentaire</span>
+      <span><i class="fas fa-flask" style="color:#10b981"></i> TP (activité expérimentale)</span>
+      <span><i class="fas fa-pencil-alt" style="color:#f59e0b"></i> Exercices</span>
+    </div>
+
     <div class="chapitre-group" data-aos="fade-up">
       <h3 class="chapitre-group-title"><i class="fas fa-dna" style="color:#10b981"></i> Thème 1 – La Terre, la vie et l'organisation du vivant</h3>
       <div class="chapitres-list">
@@ -100,9 +108,10 @@
             <p>Cellule procaryote/eucaryote, organites (noyau, mitochondrie, chloroplaste), unicellulaire/pluricellulaire</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
@@ -112,8 +121,9 @@
             <p>Diversité spécifique, génétique, des écosystèmes – mécanismes évolutifs (dérive génétique, sélection naturelle, mutations)</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
@@ -123,8 +133,9 @@
             <p>ADN, gènes, allèles, mutations, transmission héréditaire, lien génotype–phénotype</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="150">
@@ -134,8 +145,9 @@
             <p>Phylogénèse, arbres phylogénétiques, caractères dérivés partagés (synapomorphies), classification du vivant</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
       </div>
@@ -151,9 +163,10 @@
             <p>Spectre électromagnétique, flux solaire Φ = P/S (W/m²), constante solaire, loi de Wien – T de surface du Soleil</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
@@ -163,9 +176,10 @@
             <p>Bilan radiatif terrestre, albédo, absorption atmosphérique, gaz à effet de serre (CO₂, H₂O, CH₄), forçage radiatif</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-tp"><i class="fas fa-flask"></i> TP</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-tp" onclick="openDoc('#')"><i class="fas fa-flask"></i> TP</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
@@ -175,8 +189,9 @@
             <p>Chloroplaste, pigments photosynthétiques, bilan de la photosynthèse 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂, conversion photovoltaïque</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
       </div>
@@ -192,8 +207,9 @@
             <p>3 lois de Kepler (orbites elliptiques, aires, T²/a³=constante), loi de gravitation universelle F=Gm₁m₂/d²</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="50">
@@ -203,8 +219,9 @@
             <p>Année-lumière, parsec, unité astronomique, vitesse de la lumière c = 3×10⁸ m/s, décalage spectral</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
         <div class="chapitre-item" data-aos="fade-up" data-aos-delay="100">
@@ -214,8 +231,9 @@
             <p>Satellites et stations spatiales, conditions de la vie dans l'espace, missions scientifiques, exoplanètes</p>
           </div>
           <div class="chapitre-actions">
-            <button class="chapitre-btn btn-cours"><i class="fas fa-book"></i> Cours</button>
-            <button class="chapitre-btn btn-exo"><i class="fas fa-pencil-alt"></i> Exos</button>
+            <button class="chapitre-btn btn-cours" onclick="openDoc('#')"><i class="fas fa-book"></i> Cours</button>
+            <button class="chapitre-btn btn-activite" onclick="openDoc('#')"><i class="fas fa-file-alt"></i> Activité</button>
+            <button class="chapitre-btn btn-exo" onclick="openDoc('#')"><i class="fas fa-pencil-alt"></i> Exos</button>
           </div>
         </div>
       </div>

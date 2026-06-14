@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ✏️ MODIFIEZ le titre de l'onglet -->
+  <title>Cours – Corps purs et mélanges – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .doc-wrap { max-width:860px; margin:0 auto; padding:calc(var(--nav-height) + 2rem) 1.5rem 4rem; }
+    .doc-header { margin-bottom:1.5rem; }
+    .doc-header h1 { font-size:1.9rem; font-weight:900; margin:0.5rem 0; }
+    .doc-tag { display:inline-block; background:var(--primary); color:#fff; font-size:0.75rem; font-weight:800; padding:0.25rem 0.7rem; border-radius:999px; }
+    /* Barre d'actions (boutons PDF / texte) */
+    .doc-actions { display:flex; flex-wrap:wrap; gap:0.6rem; margin:1.25rem 0 2rem; }
+    .doc-btn { display:inline-flex; align-items:center; gap:0.45rem; padding:0.55rem 1.1rem; border-radius:10px; font-weight:800; font-size:0.85rem; font-family:var(--font); cursor:pointer; border:2px solid var(--primary); background:var(--primary); color:#fff; text-decoration:none; transition:all 0.25s; }
+    .doc-btn.outline { background:transparent; color:var(--primary); }
+    .doc-btn:hover { transform:translateY(-2px); }
+    /* Onglets de vue */
+    .view { display:none; }
+    .view.active { display:block; }
+    /* Mise en forme du cours texte */
+    .cours-texte h2 { font-size:1.2rem; font-weight:800; color:var(--primary); margin:2rem 0 0.75rem; }
+    .cours-texte h3 { font-size:1rem; font-weight:800; margin:1.5rem 0 0.5rem; }
+    .cours-texte p, .cours-texte li { font-size:0.95rem; color:var(--text-muted); line-height:1.85; }
+    .cours-texte ul { padding-left:1.5rem; margin-bottom:1rem; }
+    .cours-texte .definition { background:rgba(99,102,241,0.08); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:1rem 1.25rem; margin:1.25rem 0; }
+    .cours-texte .formule { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:0.75rem 1rem; font-weight:800; text-align:center; margin:1rem 0; }
+    /* Affichage du PDF */
+    .pdf-frame { width:100%; height:80vh; border:1px solid var(--border); border-radius:12px; }
+    /* Message d'accès refusé */
+    .locked { text-align:center; padding:5rem 1.5rem; }
+    .locked .big { font-size:3.5rem; margin-bottom:1rem; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">⚛</span><span class="logo-text">Ninja<span class="accent">Phy</span></span></a>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <!-- ✏️ Lien retour vers la page de la classe concernée -->
+      <a href="seconde.html" class="btn-login"><i class="fas fa-arrow-left"></i> Retour Seconde</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== CONTENU RÉSERVÉ (visible seulement si connecté) ===== -->
+<div class="doc-wrap" id="docContent" style="display:none">
+
+  <div class="doc-header">
+    <!-- ✏️ MODIFIEZ ces 3 lignes pour chaque cours -->
+    <span class="doc-tag">Seconde · Thème 1 · Chapitre 1</span>
+    <h1>Corps purs et mélanges – solutions aqueuses</h1>
+    <p style="color:var(--text-muted)">Cours complet disponible en lecture en ligne et en PDF téléchargeable.</p>
+  </div>
+
+  <!-- Boutons de bascule + téléchargement -->
+  <div class="doc-actions">
+    <button class="doc-btn" onclick="showView('texte', this)"><i class="fas fa-align-left"></i> Lire en ligne</button>
+    <button class="doc-btn outline" onclick="showView('pdf', this)"><i class="fas fa-file-pdf"></i> Voir le PDF</button>
+    <!-- ✏️ Remplacez le href par le lien de votre PDF (Google Drive, dossier docs/, etc.) -->
+    <a class="doc-btn outline" href="../docs/cours-ch1-corps-purs.pdf" download>
+      <i class="fas fa-download"></i> Télécharger le PDF
+    </a>
+  </div>
+
+  <!-- ===== VUE 1 : COURS EN TEXTE ===== -->
+  <!-- ✏️ Rédigez votre cours ici en HTML simple -->
+  <div class="view active cours-texte" id="viewTexte">
+
+    <h2>1. Corps purs et mélanges</h2>
+    <p>Un <strong>corps pur</strong> est constitué d'une seule espèce chimique. Un <strong>mélange</strong> contient au moins deux espèces chimiques différentes.</p>
+    <ul>
+      <li>Un <strong>mélange homogène</strong> : on ne distingue pas les constituants à l'œil nu (ex : eau salée).</li>
+      <li>Un <strong>mélange hétérogène</strong> : on distingue plusieurs constituants (ex : eau + huile).</li>
+    </ul>
+
+    <div class="definition">
+      <strong>💡 Définition.</strong> Une <em>solution aqueuse</em> est un mélange homogène obtenu en dissolvant un soluté (solide, liquide ou gaz) dans un solvant : l'eau.
+    </div>
+
+    <h2>2. Concentration en masse</h2>
+    <p>La concentration en masse indique la masse de soluté dissous par litre de solution :</p>
+    <div class="formule">C<sub>m</sub> = m<sub>soluté</sub> / V<sub>solution</sub> &nbsp; (en g/L)</div>
+    <p>où <strong>m</strong> est en grammes (g) et <strong>V</strong> en litres (L).</p>
+
+    <h3>Exemple</h3>
+    <p>Si on dissout 5 g de sel dans 0,5 L d'eau : C<sub>m</sub> = 5 / 0,5 = 10 g/L.</p>
+
+    <h2>3. À retenir</h2>
+    <ul>
+      <li>Distinguer corps pur, mélange homogène et hétérogène.</li>
+      <li>Connaître et appliquer la formule de la concentration en masse.</li>
+      <li>Savoir préparer une solution par dissolution.</li>
+    </ul>
+  </div>
+
+  <!-- ===== VUE 2 : PDF INTÉGRÉ ===== -->
+  <div class="view" id="viewPdf">
+    <!-- ✏️ Remplacez le src par le lien de votre PDF -->
+    <iframe class="pdf-frame" src="../docs/cours-ch1-corps-purs.pdf" title="Cours PDF"></iframe>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">
+      <i class="fas fa-info-circle"></i> Le PDF ne s'affiche pas ? <a href="../docs/cours-ch1-corps-purs.pdf" target="_blank" style="color:var(--primary)">Ouvrez-le dans un nouvel onglet</a>.
+    </p>
+  </div>
+
+</div>
+
+<!-- ===== ÉCRAN VERROUILLÉ (visiteurs non connectés) ===== -->
+<div class="doc-wrap locked" id="docLocked" style="display:none">
+  <div class="big">🔒</div>
+  <h1 style="font-weight:900">Accès réservé</h1>
+  <p style="color:var(--text-muted);max-width:420px;margin:0.5rem auto 1.5rem">
+    Ce cours est réservé aux élèves. Connecte-toi avec le code fourni par ton professeur pour y accéder.
+  </p>
+  <a href="espace-eleve.html" class="doc-btn" style="text-decoration:none"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy | <a href="rgpd.html">RGPD</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  // Contrôle d'accès : seuls les élèves connectés voient le cours
+  (function () {
+    const connecte = sessionStorage.getItem('np-user');
+    document.getElementById('docContent').style.display = connecte ? 'block' : 'none';
+    document.getElementById('docLocked').style.display  = connecte ? 'none'  : 'block';
+  })();
+
+  // Bascule entre la vue texte et la vue PDF
+  function showView(view, btn) {
+    document.getElementById('viewTexte').classList.toggle('active', view === 'texte');
+    document.getElementById('viewPdf').classList.toggle('active', view === 'pdf');
+    document.querySelectorAll('.doc-actions .doc-btn').forEach(b => {
+      if (b.tagName === 'BUTTON') b.classList.add('outline');
+    });
+    btn.classList.remove('outline');
+  }
+</script>
+</body>
+</html>

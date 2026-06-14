@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ✏️ MODIFIEZ le titre de l'onglet -->
+  <title>Activité – Dissolution du sel – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .doc-wrap { max-width:860px; margin:0 auto; padding:calc(var(--nav-height) + 2rem) 1.5rem 4rem; }
+    .doc-header { margin-bottom:1.5rem; }
+    .doc-header h1 { font-size:1.9rem; font-weight:900; margin:0.5rem 0; }
+    .doc-tag { display:inline-block; background:#8b5cf6; color:#fff; font-size:0.75rem; font-weight:800; padding:0.25rem 0.7rem; border-radius:999px; margin-right:0.4rem; }
+    .doc-tag-class { display:inline-block; background:var(--primary); color:#fff; font-size:0.75rem; font-weight:800; padding:0.25rem 0.7rem; border-radius:999px; }
+    /* Barre d'actions */
+    .doc-actions { display:flex; flex-wrap:wrap; gap:0.6rem; margin:1.25rem 0 2rem; }
+    .doc-btn { display:inline-flex; align-items:center; gap:0.45rem; padding:0.55rem 1.1rem; border-radius:10px; font-weight:800; font-size:0.85rem; font-family:var(--font); cursor:pointer; border:2px solid var(--primary); background:var(--primary); color:#fff; text-decoration:none; transition:all 0.25s; }
+    .doc-btn.outline { background:transparent; color:var(--primary); }
+    .doc-btn.purple { border-color:#8b5cf6; background:#8b5cf6; }
+    .doc-btn.purple.outline { background:transparent; color:#8b5cf6; border-color:#8b5cf6; }
+    .doc-btn:hover { transform:translateY(-2px); }
+    /* Onglets de vue */
+    .view { display:none; }
+    .view.active { display:block; }
+    /* Mise en forme de l'activité */
+    .activite h2 { font-size:1.15rem; font-weight:900; color:#8b5cf6; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem; }
+    .activite h3 { font-size:1rem; font-weight:800; margin:1.5rem 0 0.5rem; color:var(--text); }
+    .activite p, .activite li { font-size:0.95rem; color:var(--text-muted); line-height:1.85; }
+    .activite ul, .activite ol { padding-left:1.5rem; margin-bottom:1rem; }
+    /* Objectifs */
+    .objectifs { background:rgba(139,92,246,0.08); border-left:4px solid #8b5cf6; border-radius:0 10px 10px 0; padding:1rem 1.25rem; margin:1.25rem 0; }
+    .objectifs strong { color:#8b5cf6; }
+    /* Document source */
+    .document-source { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:1.25rem 1.5rem; margin:1.25rem 0; }
+    .document-source .doc-label { font-size:0.75rem; font-weight:800; color:#8b5cf6; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem; }
+    .document-source p { margin:0; }
+    .document-source img { max-width:100%; border-radius:8px; margin-top:0.75rem; }
+    /* Encadré formule / donnée */
+    .donnee { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:0.75rem 1rem; font-weight:800; text-align:center; margin:1rem 0; font-size:0.95rem; }
+    /* Questions */
+    .questions-block { margin-top:1.5rem; }
+    .question { display:flex; gap:1rem; margin-bottom:1.25rem; align-items:flex-start; }
+    .question-num { min-width:2rem; height:2rem; background:#8b5cf6; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:0.85rem; flex-shrink:0; margin-top:0.1rem; }
+    .question-text { font-size:0.95rem; color:var(--text-muted); line-height:1.75; }
+    .question-text strong { color:var(--text); }
+    /* Zone de réponse (impression) */
+    .reponse-zone { border:2px dashed var(--border); border-radius:10px; min-height:5rem; margin:0.5rem 0 1.5rem; padding:0.5rem 1rem; }
+    .reponse-label { font-size:0.75rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.25rem; }
+    /* Bilan / conclusion */
+    .bilan { background:rgba(99,102,241,0.08); border-left:4px solid var(--primary); border-radius:0 10px 10px 0; padding:1rem 1.25rem; margin:2rem 0 1rem; }
+    .bilan strong { color:var(--primary); }
+    /* PDF embed */
+    .pdf-frame { width:100%; height:80vh; border:1px solid var(--border); border-radius:12px; }
+    /* Accès refusé */
+    .locked { text-align:center; padding:5rem 1.5rem; }
+    .locked .big { font-size:3.5rem; margin-bottom:1rem; }
+
+    /* ===== STYLES IMPRESSION ===== */
+    @media print {
+      .navbar, .doc-actions, footer { display:none !important; }
+      .doc-wrap { padding:1rem !important; max-width:100% !important; }
+      .reponse-zone { min-height:6rem; }
+      body { background:white !important; color:black !important; }
+      .activite h2 { color:#6d28d9 !important; }
+      .objectifs { border-color:#6d28d9 !important; }
+      .question-num { background:#6d28d9 !important; }
+      .doc-tag { background:#6d28d9 !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">⚛</span><span class="logo-text">Ninja<span class="accent">Phy</span></span></a>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <!-- ✏️ Adaptez le lien retour à la classe concernée -->
+      <a href="seconde.html" class="btn-login"><i class="fas fa-arrow-left"></i> Retour Seconde</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== CONTENU RÉSERVÉ (visible seulement si connecté) ===== -->
+<div class="doc-wrap" id="docContent" style="display:none">
+
+  <div class="doc-header">
+    <!-- ✏️ MODIFIEZ ces lignes pour chaque activité -->
+    <div>
+      <span class="doc-tag"><i class="fas fa-flask"></i> Activité documentaire</span>
+      <span class="doc-tag-class">Seconde · Ch.1</span>
+    </div>
+    <h1>Dissolution du sel dans l'eau</h1>
+    <p style="color:var(--text-muted)">Activité documentaire à réaliser individuellement ou en binôme.</p>
+  </div>
+
+  <!-- Boutons -->
+  <div class="doc-actions">
+    <button class="doc-btn purple" onclick="showView('activite', this)"><i class="fas fa-list-ul"></i> Activité</button>
+    <button class="doc-btn purple outline" onclick="showView('pdf', this)"><i class="fas fa-file-pdf"></i> Version PDF</button>
+    <!-- ✏️ Remplacez le href par votre PDF -->
+    <a class="doc-btn purple outline" href="../docs/activite-ch1-dissolution.pdf" download>
+      <i class="fas fa-download"></i> Télécharger
+    </a>
+    <button class="doc-btn outline" onclick="window.print()"><i class="fas fa-print"></i> Imprimer</button>
+  </div>
+
+  <!-- ===== VUE 1 : ACTIVITÉ EN LIGNE ===== -->
+  <div class="view active activite" id="viewActivite">
+
+    <!-- OBJECTIFS -->
+    <!-- ✏️ Listez les compétences travaillées -->
+    <div class="objectifs">
+      <strong><i class="fas fa-bullseye"></i> Objectifs de l'activité</strong>
+      <ul style="margin:0.5rem 0 0; padding-left:1.25rem;">
+        <li>Distinguer corps pur et mélange.</li>
+        <li>Identifier les composants d'une solution aqueuse.</li>
+        <li>Calculer et utiliser la concentration en masse.</li>
+      </ul>
+    </div>
+
+    <!-- ===== PARTIE 1 : DOCUMENTS ===== -->
+    <h2><i class="fas fa-book-open"></i> Partie 1 – Documents</h2>
+
+    <!-- ✏️ Document 1 : texte -->
+    <div class="document-source">
+      <div class="doc-label"><i class="fas fa-file-alt"></i> Document 1 – Corps purs et mélanges</div>
+      <p>
+        Un <strong>corps pur</strong> est constitué d'une seule espèce chimique (ex : eau distillée H₂O, fer pur Fe).
+        Un <strong>mélange</strong> contient au moins deux espèces chimiques différentes.
+        L'eau de mer est un mélange : elle contient de l'eau, du sel (NaCl), du magnésium…
+      </p>
+      <p style="margin-top:0.5rem">
+        Dans un <strong>mélange homogène</strong>, on ne distingue pas les constituants à l'œil nu (ex : eau salée).
+        Dans un <strong>mélange hétérogène</strong>, les constituants sont visibles (ex : eau + huile).
+      </p>
+    </div>
+
+    <!-- ✏️ Document 2 : données chiffrées -->
+    <div class="document-source">
+      <div class="doc-label"><i class="fas fa-table"></i> Document 2 – Composition de l'eau de mer</div>
+      <p>L'eau de mer contient en moyenne :</p>
+      <ul>
+        <li><strong>35 g</strong> de sel dissous par litre (concentration en masse du NaCl ≈ 35 g/L)</li>
+        <li><strong>1,3 g/L</strong> de magnésium (MgCl₂)</li>
+        <li><strong>0,9 g/L</strong> de sulfate de calcium (CaSO₄)</li>
+      </ul>
+    </div>
+
+    <!-- ✏️ Document 3 : formule clé -->
+    <div class="document-source">
+      <div class="doc-label"><i class="fas fa-square-root-alt"></i> Document 3 – Concentration en masse</div>
+      <p>La concentration en masse d'un soluté dans une solution est :</p>
+      <div class="donnee">C<sub>m</sub> = m<sub>soluté</sub> / V<sub>solution</sub> &nbsp;&nbsp; (unité : g/L)</div>
+      <p>avec <strong>m</strong> en grammes (g) et <strong>V</strong> en litres (L).</p>
+    </div>
+
+    <!-- ===== PARTIE 2 : QUESTIONS ===== -->
+    <h2><i class="fas fa-question-circle"></i> Partie 2 – Questions</h2>
+
+    <div class="questions-block">
+
+      <!-- ✏️ Ajoutez / modifiez les questions ici -->
+      <div class="question">
+        <div class="question-num">1</div>
+        <div class="question-text">
+          <strong>Doc. 1</strong> — L'eau de mer est-elle un corps pur ou un mélange ? Justifiez votre réponse en vous appuyant sur le document 1.
+        </div>
+      </div>
+      <div class="reponse-label">Votre réponse :</div>
+      <div class="reponse-zone"></div>
+
+      <div class="question">
+        <div class="question-num">2</div>
+        <div class="question-text">
+          <strong>Doc. 1</strong> — Qualifiez ce mélange (homogène ou hétérogène). Justifiez.
+        </div>
+      </div>
+      <div class="reponse-label">Votre réponse :</div>
+      <div class="reponse-zone"></div>
+
+      <div class="question">
+        <div class="question-num">3</div>
+        <div class="question-text">
+          <strong>Doc. 2 &amp; 3</strong> — Calculez la masse de sel dissous dans 3 litres d'eau de mer.
+          Montrez le calcul détaillé.
+        </div>
+      </div>
+      <div class="reponse-label">Votre réponse :</div>
+      <div class="reponse-zone"></div>
+
+      <div class="question">
+        <div class="question-num">4</div>
+        <div class="question-text">
+          <strong>Doc. 2 &amp; 3</strong> — Un laboratoire dispose de 250 mL d'eau de mer.
+          Quelle masse totale de soluté (NaCl + MgCl₂ + CaSO₄) contient-il ? (Attention aux unités !)
+        </div>
+      </div>
+      <div class="reponse-label">Votre réponse :</div>
+      <div class="reponse-zone" style="min-height:7rem"></div>
+
+    </div>
+
+    <!-- BILAN -->
+    <!-- ✏️ Synthèse à compléter / retenir -->
+    <div class="bilan">
+      <strong><i class="fas fa-check-circle"></i> Bilan à retenir</strong>
+      <ul style="margin:0.5rem 0 0; padding-left:1.25rem;">
+        <li>Une solution aqueuse est un mélange homogène dont le solvant est l'eau.</li>
+        <li>La concentration en masse C<sub>m</sub> = m / V s'exprime en g/L.</li>
+        <li>Pour convertir des mL en L : diviser par 1000.</li>
+      </ul>
+    </div>
+
+  </div><!-- fin viewActivite -->
+
+  <!-- ===== VUE 2 : PDF INTÉGRÉ ===== -->
+  <div class="view" id="viewPdf">
+    <!-- ✏️ Remplacez le src par votre PDF -->
+    <iframe class="pdf-frame" src="../docs/activite-ch1-dissolution.pdf" title="Activité PDF"></iframe>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">
+      <i class="fas fa-info-circle"></i> Le PDF ne s'affiche pas ?
+      <a href="../docs/activite-ch1-dissolution.pdf" target="_blank" style="color:#8b5cf6">Ouvrez-le dans un nouvel onglet</a>.
+    </p>
+  </div>
+
+</div><!-- fin docContent -->
+
+<!-- ===== ÉCRAN VERROUILLÉ ===== -->
+<div class="doc-wrap locked" id="docLocked" style="display:none">
+  <div class="big">🔒</div>
+  <h1 style="font-weight:900">Accès réservé</h1>
+  <p style="color:var(--text-muted);max-width:420px;margin:0.5rem auto 1.5rem">
+    Cette activité est réservée aux élèves. Connecte-toi avec le code fourni par ton professeur pour y accéder.
+  </p>
+  <a href="espace-eleve.html" class="doc-btn" style="text-decoration:none;background:#8b5cf6;border-color:#8b5cf6"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy | <a href="rgpd.html">RGPD</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  // Contrôle d'accès
+  (function () {
+    const connecte = sessionStorage.getItem('np-user');
+    document.getElementById('docContent').style.display = connecte ? 'block' : 'none';
+    document.getElementById('docLocked').style.display  = connecte ? 'none'  : 'block';
+  })();
+
+  // Bascule entre la vue activité et la vue PDF
+  function showView(view, btn) {
+    document.getElementById('viewActivite').classList.toggle('active', view === 'activite');
+    document.getElementById('viewPdf').classList.toggle('active', view === 'pdf');
+    document.querySelectorAll('.doc-actions .doc-btn').forEach(b => {
+      if (b.tagName === 'BUTTON') b.classList.add('outline');
+    });
+    btn.classList.remove('outline');
+  }
+</script>
+</body>
+</html>

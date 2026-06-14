@@ -70,9 +70,10 @@
         </select>
       </div>
       <div class="form-group">
-        <label><i class="fas fa-key"></i> Code d'accès (fourni par le prof)</label>
-        <input type="password" placeholder="••••••••" required autocomplete="current-password" />
+        <label><i class="fas fa-key"></i> Code de classe (fourni par le prof)</label>
+        <input type="text" placeholder="Ex : 2DEA25" required maxlength="8" style="text-transform:uppercase;letter-spacing:2px" />
       </div>
+      <div id="loginError" style="display:none;color:#ef4444;font-size:0.85rem;margin-bottom:0.75rem;padding:0.5rem;background:rgba(239,68,68,0.1);border-radius:8px"></div>
       <button type="submit" class="btn btn-primary btn-full">
         <i class="fas fa-sign-in-alt"></i> Accéder à mon espace
       </button>
@@ -96,12 +97,16 @@
         </select>
       </div>
       <div class="form-group">
-        <label><i class="fas fa-key"></i> Code de classe (fourni par le prof)</label>
-        <input type="text" placeholder="Code à 6 caractères" required maxlength="6" />
+        <label><i class="fas fa-lock"></i> Code de classe (fourni par le prof)</label>
+        <input type="text" placeholder="Ex : 2DEA25" required maxlength="8" style="text-transform:uppercase;letter-spacing:2px" />
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-fingerprint"></i> Choisissez votre code personnel <small style="font-weight:400;color:var(--text-muted)">(min. 4 caractères, mémorisez-le !)</small></label>
+        <input type="text" placeholder="Ex : MARIE2025" required minlength="4" maxlength="12" style="text-transform:uppercase;letter-spacing:2px" />
       </div>
       <div class="rgpd-notice">
         <i class="fas fa-info-circle"></i>
-        <span>En vous inscrivant, seul votre prénom et votre classe sont enregistrés localement. Aucun email ni mot de passe personnel n'est requis.</span>
+        <span>Seuls votre prénom et votre classe sont enregistrés localement sur votre navigateur. Aucun email ni mot de passe n'est transmis.</span>
       </div>
       <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
         <input type="checkbox" id="rgpdCheck" required style="width:auto" />
@@ -109,6 +114,7 @@
           J'accepte la <a href="rgpd.html" style="color:var(--primary)">politique RGPD</a> du site
         </label>
       </div>
+      <div id="registerError" style="display:none;color:#ef4444;font-size:0.85rem;margin-bottom:0.75rem;padding:0.5rem;background:rgba(239,68,68,0.1);border-radius:8px"></div>
       <button type="submit" class="btn btn-primary btn-full">
         <i class="fas fa-user-plus"></i> Créer mon profil
       </button>
@@ -116,7 +122,33 @@
 
     <div class="form-divider"><span>ou</span></div>
     <div class="form-footer">
-      <p>Code perdu ? <a href="contact.html">Contacter le professeur</a></p>
+      <p>Code perdu ? Demandez à votre professeur</p>
+      <p style="margin-top:0.5rem"><a href="#" onclick="toggleAdminLogin()" style="color:var(--text-muted);font-size:0.8rem"><i class="fas fa-shield-alt"></i> Accès administrateur</a></p>
+    </div>
+  </div>
+
+  <!-- Panneau Admin (caché par défaut) -->
+  <div class="login-card" id="adminLoginBox" style="display:none;margin-top:1rem;max-width:420px">
+    <h3 style="font-weight:900;margin-bottom:1rem"><i class="fas fa-shield-alt" style="color:var(--primary)"></i> Espace Administrateur</h3>
+    <div class="form-group">
+      <label><i class="fas fa-lock"></i> Mot de passe administrateur</label>
+      <input type="password" id="adminPwdInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')handleAdminLogin()" />
+    </div>
+    <div id="adminError" style="display:none;color:#ef4444;font-size:0.85rem;margin-bottom:0.75rem"></div>
+    <button onclick="handleAdminLogin()" class="btn btn-primary btn-full"><i class="fas fa-sign-in-alt"></i> Connexion admin</button>
+  </div>
+
+  <!-- Panneau Admin connecté -->
+  <div class="login-card" id="adminPanel" style="display:none;margin-top:1rem;max-width:500px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h3 style="font-weight:900;margin:0"><i class="fas fa-shield-alt" style="color:var(--primary)"></i> Codes d'accès par classe</h3>
+      <button onclick="document.getElementById('adminPanel').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--text-muted)"><i class="fas fa-times"></i></button>
+    </div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Communiquez le code correspondant à chaque classe. Pour le modifier, éditez <code>CONFIG.classCodes</code> dans le fichier <code>espace-eleve.html</code>.</p>
+    <div id="adminCodesList"></div>
+    <div style="margin-top:1.5rem;padding:1rem;background:rgba(99,102,241,0.08);border-radius:10px">
+      <p style="font-size:0.85rem;font-weight:800;margin-bottom:0.25rem"><i class="fas fa-key" style="color:var(--primary)"></i> Mot de passe admin actuel</p>
+      <p style="font-size:0.8rem;color:var(--text-muted)">Modifiable dans <code>CONFIG.adminPassword</code> dans le fichier <code>espace-eleve.html</code></p>
     </div>
   </div>
 </section>
@@ -127,7 +159,7 @@
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
       <div>
         <h1 style="font-size:1.75rem;font-weight:900">Bonjour, <span id="dashName" style="color:var(--primary)"></span> ! 👋</h1>
-        <p style="color:var(--text-muted)">Classe : <strong id="dashClasse"></strong> | Dernière connexion : aujourd'hui</p>
+        <p style="color:var(--text-muted)">Classe : <strong id="dashClasse"></strong> | Code perso : <strong id="dashCode" style="color:var(--primary);letter-spacing:2px"></strong></p>
       </div>
       <button onclick="handleLogout()" class="btn btn-outline" style="font-size:0.85rem">
         <i class="fas fa-sign-out-alt"></i> Se déconnecter
@@ -209,52 +241,151 @@
 
 <script src="../js/main.js"></script>
 <script>
+/* ============================================================
+   CONFIGURATION – modifiez uniquement cette section
+   ============================================================ */
+const CONFIG = {
+  // Mot de passe administrateur (vous seul le connaissez)
+  adminPassword: "NinjaPhy2024!",
+
+  // Codes d'accès par classe (à communiquer aux élèves)
+  // L'élève entre ce code lors de l'inscription pour prouver qu'il est dans votre classe
+  classCodes: {
+    "2de A":     "2DEA25",
+    "2de B":     "2DEB25",
+    "1re ES":    "ES125",
+    "Tle ES":    "TES25",
+    "1re STI2D": "STI25"
+  }
+};
+/* ============================================================ */
+
+// ===== ONGLETS =====
 function switchTab(tab) {
   const isLogin = tab === 'login';
   document.getElementById('formLogin').style.display = isLogin ? 'block' : 'none';
   document.getElementById('formRegister').style.display = isLogin ? 'none' : 'block';
-  document.getElementById('tabLogin').style.cssText = isLogin
-    ? 'flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--primary);background:var(--primary);color:white;font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s'
-    : 'flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--border);background:transparent;color:var(--text-muted);font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s';
-  document.getElementById('tabRegister').style.cssText = isLogin
-    ? 'flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--border);background:transparent;color:var(--text-muted);font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s'
-    : 'flex:1;padding:0.6rem;border-radius:8px;border:2px solid var(--primary);background:var(--primary);color:white;font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s';
+  const base = 'flex:1;padding:0.6rem;border-radius:8px;font-family:var(--font);font-weight:800;cursor:pointer;transition:all 0.3s;';
+  document.getElementById('tabLogin').style.cssText = base + (isLogin
+    ? 'border:2px solid var(--primary);background:var(--primary);color:white'
+    : 'border:2px solid var(--border);background:transparent;color:var(--text-muted)');
+  document.getElementById('tabRegister').style.cssText = base + (!isLogin
+    ? 'border:2px solid var(--primary);background:var(--primary);color:white'
+    : 'border:2px solid var(--border);background:transparent;color:var(--text-muted)');
 }
 
+// ===== CONNEXION ÉLÈVE =====
 function handleLogin(e) {
   e.preventDefault();
-  const name = e.target.querySelector('input[type="text"]').value;
+  const inputs = e.target.querySelectorAll('input');
+  const name   = inputs[0].value.trim();
   const classe = e.target.querySelector('select').value;
-  sessionStorage.setItem('np-user', JSON.stringify({ name, classe }));
-  showDashboard(name, classe);
+  const code   = inputs[1].value.trim().toUpperCase();
+  const errEl  = document.getElementById('loginError');
+
+  // Vérification du code de classe
+  const expected = CONFIG.classCodes[classe];
+  if (!expected || code !== expected) {
+    errEl.textContent = "❌ Code de classe incorrect. Demandez-le à votre professeur.";
+    errEl.style.display = 'block';
+    return;
+  }
+  errEl.style.display = 'none';
+
+  // Récupérer le code perso stocké (s'il existe) ou utiliser le code de classe
+  const stored = localStorage.getItem('np-profile-' + classe + '-' + name.toLowerCase().replace(/\s+/g,'-'));
+  const profile = stored ? JSON.parse(stored) : { name, classe, codePerso: code };
+
+  sessionStorage.setItem('np-user', JSON.stringify(profile));
+  showDashboard(profile.name, profile.classe, profile.codePerso);
 }
 
+// ===== INSCRIPTION ÉLÈVE =====
 function handleRegister(e) {
   e.preventDefault();
-  const name = e.target.querySelector('input[type="text"]').value;
-  const classe = e.target.querySelector('select').value;
-  sessionStorage.setItem('np-user', JSON.stringify({ name, classe }));
-  showDashboard(name, classe);
+  const inputs  = e.target.querySelectorAll('input');
+  const prenom  = inputs[0].value.trim();
+  const classe  = e.target.querySelector('select').value;
+  const code    = inputs[1].value.trim().toUpperCase();
+  const perso   = inputs[2].value.trim();
+  const errEl   = document.getElementById('registerError');
+
+  // Vérification du code de classe
+  const expected = CONFIG.classCodes[classe];
+  if (!expected || code !== expected) {
+    errEl.textContent = "❌ Code de classe incorrect. Demandez-le à votre professeur.";
+    errEl.style.display = 'block';
+    return;
+  }
+  if (perso.length < 4) {
+    errEl.textContent = "❌ Votre code personnel doit faire au moins 4 caractères.";
+    errEl.style.display = 'block';
+    return;
+  }
+  errEl.style.display = 'none';
+
+  const profile = { name: prenom, classe, codePerso: perso.toUpperCase() };
+  const key = 'np-profile-' + classe + '-' + prenom.toLowerCase().replace(/\s+/g,'-');
+  localStorage.setItem(key, JSON.stringify(profile));
+  sessionStorage.setItem('np-user', JSON.stringify(profile));
+  showDashboard(prenom, classe, perso.toUpperCase());
 }
 
-function showDashboard(name, classe) {
+// ===== AFFICHER LE DASHBOARD =====
+function showDashboard(name, classe, codePerso) {
   document.getElementById('loginSection').style.display = 'none';
   document.getElementById('dashboardSection').style.display = 'block';
   document.getElementById('dashName').textContent = name.split(' ')[0];
   document.getElementById('dashClasse').textContent = classe;
+  if (document.getElementById('dashCode')) {
+    document.getElementById('dashCode').textContent = codePerso || '—';
+  }
 }
 
+// ===== DÉCONNEXION =====
 function handleLogout() {
   sessionStorage.removeItem('np-user');
   document.getElementById('loginSection').style.display = 'flex';
   document.getElementById('dashboardSection').style.display = 'none';
 }
 
-// Auto login if session
+// ===== CONNEXION ADMIN =====
+function handleAdminLogin() {
+  const pwd = document.getElementById('adminPwdInput').value;
+  const errEl = document.getElementById('adminError');
+  if (pwd === CONFIG.adminPassword) {
+    document.getElementById('adminLoginBox').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    renderAdminCodes();
+  } else {
+    errEl.textContent = "❌ Mot de passe incorrect.";
+    errEl.style.display = 'block';
+  }
+}
+
+function renderAdminCodes() {
+  const list = document.getElementById('adminCodesList');
+  if (!list) return;
+  list.innerHTML = Object.entries(CONFIG.classCodes).map(([classe, code]) => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--border)">
+      <span style="font-weight:700">${classe}</span>
+      <code style="background:var(--bg-card);padding:0.3rem 0.8rem;border-radius:6px;font-size:1rem;letter-spacing:2px;color:var(--primary)">${code}</code>
+    </div>
+  `).join('');
+}
+
+// ===== TOGGLE ADMIN =====
+function toggleAdminLogin() {
+  const box = document.getElementById('adminLoginBox');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  document.getElementById('adminPanel').style.display = 'none';
+}
+
+// ===== AUTO LOGIN =====
 const saved = sessionStorage.getItem('np-user');
 if (saved) {
-  const { name, classe } = JSON.parse(saved);
-  showDashboard(name, classe);
+  const { name, classe, codePerso } = JSON.parse(saved);
+  showDashboard(name, classe, codePerso);
 }
 </script>
 </body>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Actualités & Bonne humeur – NinjaPhy</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    /* ===== MISE EN PAGE GÉNÉRALE ===== */
+    .page-wrap { max-width:960px; margin:0 auto; padding:calc(var(--nav-height) + 2.5rem) 1.5rem 5rem; }
+
+    /* En-tête de section */
+    .section-bloc { margin-bottom:3.5rem; }
+    .section-bloc-header { display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem; padding-bottom:0.75rem; border-bottom:3px solid var(--border); }
+    .section-bloc-header h2 { font-size:1.4rem; font-weight:900; margin:0; }
+    .section-icon { width:2.4rem; height:2.4rem; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+    .icon-news  { background:rgba(99,102,241,0.12); color:var(--primary); }
+    .icon-joke  { background:rgba(251,191,36,0.15); color:#d97706; }
+    .icon-quote { background:rgba(16,185,129,0.12); color:#059669; }
+
+    /* ===== ACTUALITÉS ===== */
+    .news-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:1.25rem; }
+    .news-card { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:transform 0.25s, box-shadow 0.25s; display:flex; flex-direction:column; }
+    .news-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.1); }
+    .news-card-img { width:100%; height:160px; object-fit:cover; background:var(--border); display:flex; align-items:center; justify-content:center; font-size:3rem; color:var(--text-muted); }
+    .news-card-img img { width:100%; height:100%; object-fit:cover; }
+    .news-card-body { padding:1rem 1.1rem 1.1rem; flex:1; display:flex; flex-direction:column; gap:0.4rem; }
+    .news-badge { font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:var(--primary); }
+    .news-card-body h3 { font-size:0.95rem; font-weight:800; margin:0; line-height:1.4; color:var(--text); }
+    .news-card-body p { font-size:0.85rem; color:var(--text-muted); margin:0; line-height:1.6; flex:1; }
+    .news-card-footer { display:flex; align-items:center; justify-content:space-between; margin-top:0.75rem; }
+    .news-date { font-size:0.75rem; color:var(--text-muted); }
+    .news-link { font-size:0.8rem; font-weight:800; color:var(--primary); text-decoration:none; display:flex; align-items:center; gap:0.3rem; }
+    .news-link:hover { text-decoration:underline; }
+    /* Carte vidéo */
+    .news-card.video-card .news-card-img { position:relative; cursor:pointer; }
+    .play-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.35); display:flex; align-items:center; justify-content:center; font-size:2.5rem; color:#fff; transition:background 0.2s; }
+    .news-card.video-card .news-card-img:hover .play-overlay { background:rgba(0,0,0,0.55); }
+
+    /* ===== BLAGUES ===== */
+    .blague-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:1.1rem; }
+    .blague-card { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.4rem; position:relative; }
+    .blague-card::before { content:'\f118'; font-family:"Font Awesome 6 Free"; font-weight:400; position:absolute; top:1rem; right:1.2rem; font-size:1.5rem; color:rgba(251,191,36,0.3); }
+    .blague-q { font-size:0.95rem; font-weight:700; color:var(--text); margin-bottom:0.6rem; line-height:1.5; }
+    .blague-r { font-size:0.9rem; color:var(--text-muted); border-top:1px dashed var(--border); padding-top:0.6rem; margin-top:0.5rem; line-height:1.55; }
+    .blague-r em { color:#d97706; font-style:normal; font-weight:800; }
+    .blague-date { font-size:0.72rem; color:var(--text-muted); margin-top:0.7rem; }
+
+    /* ===== CITATION ===== */
+    .citation-principale { background:linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(99,102,241,0.08) 100%); border:1px solid var(--border); border-radius:18px; padding:2rem 2.5rem; position:relative; margin-bottom:1.5rem; }
+    .citation-principale::before { content:'\201C'; font-size:6rem; font-weight:900; color:rgba(16,185,129,0.15); position:absolute; top:-0.5rem; left:1.5rem; line-height:1; font-family:Georgia,serif; }
+    .citation-texte { font-size:1.15rem; font-weight:700; color:var(--text); line-height:1.75; position:relative; z-index:1; margin-bottom:1rem; font-style:italic; }
+    .citation-auteur { font-size:0.88rem; font-weight:800; color:#059669; display:flex; align-items:center; gap:0.5rem; }
+    .citation-auteur::before { content:'—'; }
+    .citation-context { font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem; }
+    /* Archives citations */
+    .citations-archives { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:0.9rem; }
+    .citation-mini { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:1rem 1.15rem; }
+    .citation-mini p { font-size:0.88rem; color:var(--text-muted); font-style:italic; margin:0 0 0.5rem; line-height:1.6; }
+    .citation-mini span { font-size:0.75rem; font-weight:800; color:#059669; }
+    .archives-label { font-size:0.8rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.75rem; }
+
+    /* Message vide */
+    .empty-msg { text-align:center; padding:2.5rem; color:var(--text-muted); font-size:0.9rem; background:var(--bg-card); border:1px dashed var(--border); border-radius:14px; }
+    .empty-msg .em-icon { font-size:2.5rem; margin-bottom:0.5rem; }
+
+    @media(max-width:600px){
+      .citation-principale { padding:1.5rem 1.25rem 1.25rem; }
+      .citation-principale::before { font-size:4rem; }
+      .citation-texte { font-size:1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">⚛</span><span class="logo-text">Ninja<span class="accent">Phy</span></span></a>
+    <div class="nav-actions">
+      <button class="btn-theme" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <a href="../index.html" class="btn-login"><i class="fas fa-arrow-left"></i> Accueil</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- EN-TÊTE PAGE -->
+  <div style="margin-bottom:2.5rem">
+    <span style="display:inline-block;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:800;padding:0.25rem 0.7rem;border-radius:999px;margin-bottom:0.6rem">
+      <i class="fas fa-globe"></i> Ouvert à tous
+    </span>
+    <h1 style="font-size:2rem;font-weight:900;margin:0.3rem 0 0.5rem">Actualités &amp; Bonne humeur 🚀</h1>
+    <p style="color:var(--text-muted);font-size:0.95rem">Les découvertes scientifiques, les blagues du labo et les citations inspirantes de votre prof.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1 : ACTUALITÉS SCIENTIFIQUES                         -->
+  <!-- ============================================================ -->
+  <div class="section-bloc" id="actualites">
+    <div class="section-bloc-header">
+      <div class="section-icon icon-news"><i class="fas fa-newspaper"></i></div>
+      <h2>🔭 Actualités scientifiques</h2>
+    </div>
+
+    <div class="news-grid">
+
+      <!-- ✏️ MODÈLE CARTE ARTICLE — dupliquez ce bloc pour ajouter un article -->
+      <div class="news-card">
+        <div class="news-card-img">🪐</div>
+        <div class="news-card-body">
+          <div class="news-badge">Astronomie · Exemple</div>
+          <h3>Exemple : titre de l'article scientifique</h3>
+          <p>Remplacez ce texte par un court résumé de l'article (2-3 phrases). Expliquez pourquoi c'est intéressant !</p>
+          <div class="news-card-footer">
+            <span class="news-date"><i class="far fa-calendar"></i> Semaine du …</span>
+            <!-- ✏️ Remplacez # par l'URL de l'article -->
+            <a class="news-link" href="#" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Lire l'article</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✏️ MODÈLE CARTE VIDÉO — pour partager une vidéo YouTube -->
+      <!--
+      <div class="news-card video-card">
+        <div class="news-card-img">
+          <img src="https://img.youtube.com/vi/ID_YOUTUBE/hqdefault.jpg" alt="miniature vidéo" />
+          <a href="https://www.youtube.com/watch?v=ID_YOUTUBE" target="_blank" rel="noopener" class="play-overlay">
+            <i class="fas fa-play-circle"></i>
+          </a>
+        </div>
+        <div class="news-card-body">
+          <div class="news-badge">Vidéo · Physique</div>
+          <h3>Titre de la vidéo</h3>
+          <p>Courte description de ce qu'on y apprend.</p>
+          <div class="news-card-footer">
+            <span class="news-date"><i class="far fa-calendar"></i> Date</span>
+            <a class="news-link" href="https://www.youtube.com/watch?v=ID_YOUTUBE" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Voir la vidéo</a>
+          </div>
+        </div>
+      </div>
+      -->
+
+      <!-- ✏️ MODÈLE CARTE LIEN — pour partager un lien simple -->
+      <!--
+      <div class="news-card">
+        <div class="news-card-img">⚗️</div>
+        <div class="news-card-body">
+          <div class="news-badge">Chimie · Lycée</div>
+          <h3>Titre du lien ou de la ressource</h3>
+          <p>Description courte.</p>
+          <div class="news-card-footer">
+            <span class="news-date"><i class="far fa-calendar"></i> Date</span>
+            <a class="news-link" href="#" target="_blank" rel="noopener"><i class="fas fa-link"></i> Consulter</a>
+          </div>
+        </div>
+      </div>
+      -->
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2 : BLAGUES                                          -->
+  <!-- ============================================================ -->
+  <div class="section-bloc" id="blagues">
+    <div class="section-bloc-header">
+      <div class="section-icon icon-joke"><i class="fas fa-laugh-beam"></i></div>
+      <h2>😄 Blagues du labo</h2>
+    </div>
+
+    <div class="blague-grid">
+
+      <!-- ✏️ MODÈLE BLAGUE — dupliquez ce bloc pour en ajouter -->
+      <div class="blague-card">
+        <div class="blague-q">— Pourquoi les plongeurs plongent-ils toujours en arrière et jamais en avant ?</div>
+        <div class="blague-r">Parce que sinon, ils tomberaient dans le bateau ! <em>😂</em></div>
+        <div class="blague-date"><i class="far fa-calendar-alt"></i> Semaine du 9 juin 2025</div>
+      </div>
+
+      <!-- ✏️ Exemple blague scientifique -->
+      <div class="blague-card">
+        <div class="blague-q">— Qu'est-ce qu'un crocodile qui surveille la chimie ?</div>
+        <div class="blague-r">Un <em>acide crocodile</em> ! <em>🐊⚗️</em></div>
+        <div class="blague-date"><i class="far fa-calendar-alt"></i> Semaine du 2 juin 2025</div>
+      </div>
+
+      <!-- ✏️ TEMPLATE vide à copier-coller :
+      <div class="blague-card">
+        <div class="blague-q">— Question / début de la blague…</div>
+        <div class="blague-r">Réponse / chute de la blague ! <em>😄</em></div>
+        <div class="blague-date"><i class="far fa-calendar-alt"></i> Semaine du …</div>
+      </div>
+      -->
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3 : CITATION DE LA SEMAINE                           -->
+  <!-- ============================================================ -->
+  <div class="section-bloc" id="citations">
+    <div class="section-bloc-header">
+      <div class="section-icon icon-quote"><i class="fas fa-quote-left"></i></div>
+      <h2>✨ Citation de la semaine</h2>
+    </div>
+
+    <!-- ✏️ CITATION PRINCIPALE (celle de la semaine en cours) -->
+    <div class="citation-principale">
+      <div class="citation-texte">
+        « L'imagination est plus importante que le savoir. Le savoir est limité, tandis que l'imagination embrasse le monde entier. »
+      </div>
+      <div class="citation-auteur">Albert Einstein</div>
+      <div class="citation-context">Physicien théoricien (1879–1955) · Prix Nobel de Physique 1921</div>
+    </div>
+
+    <!-- ✏️ ARCHIVES (semaines précédentes) -->
+    <div class="archives-label"><i class="fas fa-history"></i> Citations précédentes</div>
+    <div class="citations-archives">
+
+      <div class="citation-mini">
+        <p>« La science, c'est ce que le père enseigne à ses enfants. »</p>
+        <span>— Simone de Beauvoir · Semaine du 2 juin</span>
+      </div>
+
+      <div class="citation-mini">
+        <p>« Rien ne se perd, rien ne se crée, tout se transforme. »</p>
+        <span>— Antoine Lavoisier · Semaine du 26 mai</span>
+      </div>
+
+      <!-- ✏️ TEMPLATE archives à copier-coller :
+      <div class="citation-mini">
+        <p>« Texte de la citation »</p>
+        <span>— Auteur · Semaine du …</span>
+      </div>
+      -->
+
+    </div>
+  </div>
+
+</div><!-- fin page-wrap -->
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="footerYear"></span> NinjaPhy | <a href="rgpd.html">RGPD</a> | <a href="mentions-legales.html">Mentions légales</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
