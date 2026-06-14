@@ -3,7 +3,7 @@
 Site pédagogique de physique-chimie pour les lycéens — cours, TP, exercices et ressources
 conformes aux programmes officiels de l'Éducation Nationale.
 
-🌐 **Site en ligne** : [senseininja.github.io/github-slideshow](https://senseininja.github.io/github-slideshow)
+🌐 **Site en ligne** : [senseininja.github.io/github-slideshow](https://senseininja.github.io/ninjaphy)
 
 ---
 
